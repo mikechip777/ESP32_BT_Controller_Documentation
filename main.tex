@@ -1,0 +1,44 @@
+\documentclass[a4paper,12pt]{report}
+
+% --- Encoding & Fonts ---
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{newtxtext,newtxmath}
+
+% --- Language ---
+\usepackage[english,spanish]{babel}
+
+% --- Page Layout ---
+\usepackage[a4paper,margin=1in]{geometry}
+\usepackage{parskip}
+\usepackage{setspace}
+
+% --- Graphics ---
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta, positioning}
+
+% --- Code ---
+\usepackage{listings}
+\usepackage{xcolor}
+
+% --- Hyperlinks (ALWAYS LAST) ---
+\usepackage[hidelinks]{hyperref}
+
+% --- Document ---
+\begin{document}
+	
+	\tableofcontents
+	\newpage
+	
+	\input{chapters/01_system_overview}
+	\input{chapters/02_architecture}
+	\input{chapters/03_protocol_spec}
+	\input{chapters/04_firmware_structure}
+	\input{chapters/05_timing}
+	\input{chapters/06_hardware}
+	\input{chapters/07_performance}
+	\input{chapters/08_design_decisions}
+	\input{chapters/09_future_work}
+	
+\end{document}
