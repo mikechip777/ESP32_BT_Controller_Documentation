@@ -1,5 +1,215 @@
-\section{Architecture}
+\chapter{Firmware Architecture}
 
+\section{Architectural Objectives}
 
+The firmware architecture is designed to enforce structural clarity, execution determinism, and controlled modular growth.
 
-\subsection{Purpose}
+The architectural objectives are:
+
+\begin{itemize}
+	\item Enforce separation between communication, control logic, and hardware interaction.
+	\item Maintain deterministic execution ordering.
+	\item Constrain inter-module dependencies.
+	\item Enable incremental feature expansion without structural degradation.
+	\item Isolate hardware-specific implementation details.
+\end{itemize}
+
+These objectives define the structural organization of the firmware.
+
+% ------------------------------------------------
+
+\section{Architectural Decomposition Model}
+
+The firmware follows a layered decomposition strategy. Each layer encapsulates a specific abstraction level and interacts only with adjacent layers.
+
+\subsection{Logical Layers}
+
+The system is partitioned into four logical layers:
+
+\begin{enumerate}
+	\item Application / Control Layer
+	\item Communication Layer
+	\item Hardware Abstraction Layer (HAL)
+	\item Physical Interface Layer
+\end{enumerate}
+
+\subsubsection*{Application / Control Layer}
+
+This layer contains system-level logic and internal state management.  
+It does not access hardware registers or communication buffers directly.
+
+\subsubsection*{Communication Layer}
+
+This layer manages structured packet exchange and data validation.  
+It translates external serialized data into internal control variables and formats telemetry structures for transmission.
+
+\subsubsection*{Hardware Abstraction Layer}
+
+The HAL provides a stable interface between logical control variables and microcontroller peripherals.  
+All direct peripheral configuration and register-level interaction is confined to this layer.
+
+\subsubsection*{Physical Interface Layer}
+
+Represents electrical connections and external components.  
+No firmware logic exists at this layer.
+
+% ------------------------------------------------
+
+\section{Module-Level Decomposition}
+
+Within the layered structure, the firmware is divided into discrete modules.  
+Each module has a well-defined responsibility and limited external visibility.
+
+Primary module categories include:
+
+\begin{itemize}
+	\item Communication Parsing Module
+	\item Control Variable Management Module
+	\item Motor Control Module
+	\item Servo Control Module
+	\item Telemetry Aggregation Module
+	\item Sensor Interface Modules
+	\item GPIO Expansion Driver
+	\item Output Management Module
+	\item Debug and Diagnostic Module
+\end{itemize}
+
+Modules interact through controlled data interfaces rather than direct cross-calls.
+
+% ------------------------------------------------
+
+\section{Execution Model}
+
+The firmware executes within a single main control loop.  
+No preemptive scheduler or real-time operating system is employed.
+
+\subsection{Deterministic Ordering}
+
+Each loop iteration executes subsystems in a fixed order.  
+The ordering is intentionally static to guarantee predictable behavior and bounded execution time.
+
+\subsection{Polling Strategy}
+
+Subsystems are serviced through structured polling.  
+This eliminates concurrency conflicts and reduces synchronization complexity.
+
+\subsection{Non-Blocking Constraint}
+
+Blocking delays are avoided within loop-executed modules.  
+All time-dependent behavior must be implemented using state tracking rather than delay-based waiting.
+
+This constraint ensures bounded worst-case loop duration.
+
+% ------------------------------------------------
+
+\section{Data Ownership and State Management}
+
+The firmware maintains a centralized internal state model.
+
+\subsection{State Variables}
+
+State variables represent:
+
+\begin{itemize}
+	\item Target actuator values
+	\item Measured sensor data
+	\item Communication status
+	\item Output states
+\end{itemize}
+
+Each module is permitted to modify only the state variables within its defined responsibility domain.
+
+\subsection{State Update Discipline}
+
+State updates occur in deterministic phases of the control loop.  
+Read-modify-write patterns are controlled to avoid unintended side effects.
+
+% ------------------------------------------------
+
+\section{Data Flow Structure}
+
+\subsection{Command Processing Path}
+
+Incoming serialized data is:
+
+\begin{enumerate}
+	\item Received into a communication buffer
+	\item Validated and parsed
+	\item Translated into internal control variables
+	\item Applied to actuator update logic
+\end{enumerate}
+
+\subsection{Telemetry Processing Path}
+
+Telemetry data is:
+
+\begin{enumerate}
+	\item Collected from state variables and sensor modules
+	\item Assembled into structured packets
+	\item Serialized into a transmission buffer
+	\item Sent through the communication interface
+\end{enumerate}
+
+Buffers isolate communication timing from control execution timing.
+
+% ------------------------------------------------
+
+\section{Interface Boundaries}
+
+Strict interface boundaries are enforced between:
+
+\begin{itemize}
+	\item Communication and Control logic
+	\item Control logic and HAL
+	\item HAL and hardware peripherals
+\end{itemize}
+
+Direct cross-layer access is prohibited.  
+This containment prevents structural coupling and simplifies future refactoring.
+
+% ------------------------------------------------
+
+\section{Hardware Abstraction Strategy}
+
+All hardware-specific configuration is localized within the HAL.
+
+Abstraction mechanisms include:
+
+\begin{itemize}
+	\item Encapsulated peripheral initialization
+	\item Driver-level isolation
+	\item Pin mapping centralization
+	\item Replaceable hardware drivers
+\end{itemize}
+
+Control modules remain independent of specific peripheral registers or microcontroller configuration details.
+
+% ------------------------------------------------
+
+\section{Scalability and Controlled Expansion}
+
+The architecture supports feature growth through modular extension.
+
+\subsection{Sensor Integration}
+
+New sensors are introduced via independent interface modules connected through the HAL.
+
+\subsection{Actuator Integration}
+
+New actuators are implemented as discrete control modules without altering communication parsing logic.
+
+\subsection{I/O Expansion}
+
+External expansion devices increase hardware capacity while maintaining logical separation from application logic.
+
+\subsection{Structural Stability}
+
+Architectural integrity is preserved by:
+
+\begin{itemize}
+	\item Maintaining layer boundaries
+	\item Avoiding circular dependencies
+	\item Restricting module visibility
+\end{itemize}
+
+These constraints prevent architectural degradation as the firmware evolves.

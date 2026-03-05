@@ -1,12 +1,12 @@
 
 
-\section{System Overview}
+\chapter{System Overview}
 
-\subsection{Purpose of the System}
+\section{Purpose of the System}
 
 The ESP32 Bluetooth RC Controller system is a modular embedded firmware platform designed to enable real-time remote control of an RC vehicle using bidirectional Bluetooth communication. The system is built around the ESP32 microcontroller and establishes a Serial Port Profile (SPP) Bluetooth link with an Android application, allowing both command transmission and telemetry feedback over a single wireless channel.
 
-\subsubsection{What the System Does}
+\subsection{What the System Does}
 
 The system receives control commands from an Android application via Bluetooth SPP and translates them into hardware actions such as:
 
@@ -23,7 +23,7 @@ In addition to executing control commands, the firmware continuously gathers sys
 
 The communication is fully bidirectional, enabling real-time control and monitoring within the same wireless link.
 
-\subsubsection{Who Uses the System}
+\subsection{Who Uses the System}
 
 The system is intended primarily for:
 
@@ -36,7 +36,7 @@ The system is intended primarily for:
 
 The firmware structure is designed to be readable, extendable, and educational. Its modular organization allows users to understand how individual subsystems interact while maintaining separation of responsibilities between communication, control logic, telemetry, and hardware abstraction.
 
-\subsubsection{What Problem the System Solves}
+\subsection{What Problem the System Solves}
 
 Traditional RC systems rely on dedicated RF transmitters with limited customization and minimal feedback capabilities. In contrast, this system leverages the computational power and connectivity of the ESP32 to provide:
 
@@ -49,7 +49,7 @@ Traditional RC systems rely on dedicated RF transmitters with limited customizat
 
 By using Bluetooth SPP as a communication layer, the system eliminates the need for proprietary transmitters and allows control from a widely available Android device.
 
-\subsubsection{Bidirectional Bluetooth Communication}
+\subsection{Bidirectional Bluetooth Communication}
 
 The firmware establishes a Serial Port Profile (SPP) Bluetooth connection, enabling structured packet-based communication between the ESP32 and the Android application. This approach allows:
 
@@ -62,13 +62,13 @@ The firmware establishes a Serial Port Profile (SPP) Bluetooth connection, enabl
 
 The use of SPP provides sufficient bandwidth for control and telemetry while maintaining implementation simplicity for educational and maker-level projects.
 
-\subsubsection{Real-Time Control and Telemetry Feedback}
+\subsection{Real-Time Control and Telemetry Feedback}
 
 The system is designed around a continuous polling loop architecture that avoids blocking delays. Control packets are processed immediately upon reception, and hardware outputs are updated in deterministic order.
 
 Simultaneously, telemetry modules collect data from sensors, input states, and internal system variables and transmit them back to the Android application. This creates a closed-loop control and monitoring environment suitable for experimentation, diagnostics, and performance tuning.
 
-\subsubsection{Modular and Expandable Architecture}
+\subsection{Modular and Expandable Architecture}
 
 A key objective of the system is modularity. Each functional domain is separated into dedicated modules, including:
 
@@ -99,13 +99,16 @@ As a result, the system can evolve from a simple RC controller into a more advan
 
 
 
-\subsection{System Objectives}
+
+
+
+\section{System Objectives}
 
 The ESP32 Bluetooth RC Controller firmware was developed with clear engineering objectives in mind. Beyond enabling basic remote control functionality, the system is structured to serve as an educational platform for students, hobbyists, and makers who wish to understand real-time embedded communication and modular firmware design.
 
 The following objectives guided the architecture and implementation of the system.
 
-\subsubsection{Deterministic Control Loop}
+\subsection{Deterministic Control Loop}
 
 The firmware is built around a continuous, non-blocking main loop executed on the ESP32. The execution order is explicitly defined, and no blocking delays are used within the control path.
 
@@ -120,7 +123,7 @@ This design ensures that:
 
 For educational purposes, this deterministic structure allows students to clearly trace how data flows from communication input to physical hardware output.
 
-\subsubsection{Low-Latency Command Processing}
+\subsection{Low-Latency Command Processing}
 
 A primary objective of the system is to minimize the delay between user input on the Android application and hardware response on the vehicle.
 
@@ -135,7 +138,7 @@ To achieve this:
 
 This low-latency architecture makes the platform suitable for real-time RC control while remaining simple enough for learning and experimentation.
 
-\subsubsection{Robust Packet Synchronization}
+\subsection{Robust Packet Synchronization}
 
 Wireless communication is inherently susceptible to noise, partial transmissions, and synchronization loss. To address this, the firmware implements structured packet framing and checksum validation.
 
@@ -150,7 +153,7 @@ The objectives of the packet handling design are:
 
 This approach provides practical exposure to real-world communication challenges while maintaining implementation clarity for students and makers.
 
-\subsubsection{Modular Firmware Structure}
+\subsection{Modular Firmware Structure}
 
 The firmware is intentionally divided into independent modules, each responsible for a specific functional domain, such as:
 
@@ -176,7 +179,7 @@ This modular organization enables:
 
 For academic and DIY audiences, this structure makes the firmware easier to study, modify, and extend.
 
-\subsubsection{Hardware Abstraction}
+\subsection{Hardware Abstraction}
 
 The system employs a hardware abstraction approach in which control logic is separated from direct GPIO and peripheral manipulation.
 
@@ -190,7 +193,7 @@ By isolating hardware-specific operations behind abstraction functions:
 
 This design encourages good embedded software practices and introduces learners to scalable firmware architecture principles.
 
-\subsubsection{Expandability and Experimentation}
+\subsection{Expandability and Experimentation}
 
 Another central objective of the project is expandability. The firmware supports additional peripherals and features without requiring major structural modifications.
 
@@ -228,20 +231,20 @@ By combining deterministic execution, structured communication, modular organiza
 
 
 
-\subsection{High-Level System Description}
+\section{High-Level System Description}
 
 
 The ESP32 Bluetooth RC Controller system is structured as a layered embedded architecture that separates communication, processing, and hardware interaction into clearly defined functional blocks. This separation improves clarity, maintainability, and educational value.
 
 At a high level, the system consists of six major functional layers that operate together to provide real-time remote control and telemetry feedback.
 
-\subsubsection{Android Application}
+\subsection{Android Application}
 
 The Android application acts as the human interface of the system. It generates control commands based on user interaction (such as joystick movement, button presses, or slider adjustments) and transmits them wirelessly to the ESP32.
 
 In addition to sending commands, the application receives telemetry data from the vehicle, allowing real-time monitoring of system variables, indicators, and sensor readings.
 
-\subsubsection{Bluetooth Communication Layer}
+\subsection{Bluetooth Communication Layer}
 
 The Bluetooth Communication Layer establishes a Serial Port Profile (SPP) connection between the Android device and the ESP32.
 
@@ -255,13 +258,13 @@ This layer is responsible for:
 
 It provides a transparent transport channel over which structured packets are exchanged.
 
-\subsubsection{Protocol Layer}
+\subsection{Protocol Layer}
 
 The Protocol Layer defines how raw byte streams are interpreted as structured packets. It ensures that transmitted data follows defined framing rules, includes validation mechanisms such as checksums, and maintains synchronization even in the presence of corrupted or incomplete transmissions.
 
 This layer converts incoming byte streams into meaningful control data and formats outgoing telemetry data into structured packets.
 
-\subsubsection{Control Processing Layer}
+\subsection{Control Processing Layer}
 
 The Control Processing Layer interprets validated control packets and translates them into logical control actions.
 
@@ -276,7 +279,7 @@ Responsibilities include:
 
 This layer contains the core decision-making logic that determines how received commands affect the vehicle's behavior.
 
-\subsubsection{Telemetry Processing Layer}
+\subsection{Telemetry Processing Layer}
 
 The Telemetry Processing Layer gathers system information and prepares it for transmission back to the Android application.
 
@@ -292,7 +295,7 @@ Telemetry may include:
 
 This layer ensures that feedback information is structured and transmitted without interfering with the real-time control path.
 
-\subsubsection{Hardware Abstraction Layer}
+\subsection{Hardware Abstraction Layer}
 
 The Hardware Abstraction Layer isolates direct hardware access from higher-level control logic.
 
@@ -307,7 +310,7 @@ It provides standardized interfaces for:
 
 By separating hardware-specific operations from logic, the system becomes easier to modify, port, and extend.
 
-\subsubsection{Physical Hardware}
+\subsection{Physical Hardware}
 
 The Physical Hardware layer represents the actual electronic and electromechanical components connected to the ESP32. These may include:
 
@@ -321,7 +324,7 @@ The Physical Hardware layer represents the actual electronic and electromechanic
 
 This layer interacts directly with the environment and represents the tangible output of the system.
 
-\subsubsection{System Block Diagram}
+\subsection{System Block Diagram}
 
 Figure~\ref{fig:system_block_diagram} illustrates the high-level architecture of the system and the bidirectional data flow between components.
 
@@ -371,7 +374,7 @@ The diagram highlights the separation between control flow (downward path) and t
 
 
 
-\subsection{Functional Architecture}
+\section{Functional Architecture}
 
 The system operates through two primary functional flows that execute continuously during runtime:
 
@@ -382,7 +385,7 @@ The system operates through two primary functional flows that execute continuous
 
 These two paths form a bidirectional communication loop between the Android application and the physical hardware connected to the ESP32. The downlink path is responsible for real-time control, while the uplink path provides monitoring and feedback.
 
-\subsubsection{Downlink: Control Path}
+\subsection{Downlink: Control Path}
 
 The downlink path begins at the Android application, where user interactions such as joystick movements, button presses, and slider adjustments generate control data.
 
@@ -419,7 +422,7 @@ The hardware abstraction mechanisms convert logical control commands into electr
 
 This entire sequence occurs within the main execution loop, ensuring deterministic and low-latency behavior.
 
-\subsubsection{Uplink: Telemetry Path}
+\subsection{Uplink: Telemetry Path}
 
 While control commands flow from the Android device to the vehicle, telemetry data flows in the opposite direction to provide feedback and monitoring.
 
@@ -453,7 +456,7 @@ Formatted telemetry packets are transmitted over the same Bluetooth SPP connecti
 \textbf{5. Android Application} \\
 The Android application receives and decodes telemetry packets, updating graphical elements such as indicators, charts, and data panels in real time.
 
-\subsubsection{Bidirectional Operation}
+\subsection{Bidirectional Operation}
 
 The downlink and uplink paths operate concurrently within the same system loop. Control commands and telemetry packets share the Bluetooth communication channel but are structured to avoid ambiguity.
 
@@ -485,13 +488,13 @@ This functional dual-path structure is fundamental to the overall architecture o
 
 
 
-\subsection{Real-Time Characteristics}
+\section{Real-Time Characteristics}
 
 The ESP32 Bluetooth RC Controller firmware is designed as a real-time embedded control system operating without a real-time operating system (RTOS). Instead, it relies on a structured polling-based architecture and a deterministic execution loop to ensure predictable and responsive behavior.
 
 This section describes the real-time design principles that guide the firmware implementation.
 
-\subsubsection{Polling-Based Architecture}
+\subsection{Polling-Based Architecture}
 
 The system operates using a continuous main loop that repeatedly executes core functional tasks in a defined order. Rather than relying on complex task scheduling or interrupt-driven processing for high-level logic, the firmware uses structured polling to evaluate communication, control updates, and telemetry generation.
 
@@ -506,7 +509,7 @@ Within each loop iteration, the system:
 
 This polling-based approach simplifies system reasoning and makes execution flow easier to understand for students and hobbyists learning embedded systems design.
 
-\subsubsection{Non-Blocking Loop Design}
+\subsection{Non-Blocking Loop Design}
 
 A key objective of the firmware is to maintain continuous system responsiveness. For this reason, the main loop avoids blocking operations that could delay control updates or communication processing.
 
@@ -520,7 +523,7 @@ The design ensures that:
 
 By avoiding blocking constructs, the system maintains consistent loop execution frequency and responsive behavior.
 
-\subsubsection{Avoidance of \texttt{delay()} Usage}
+\subsection{Avoidance of \texttt{delay()} Usage}
 
 The firmware intentionally avoids the use of \texttt{delay()} in the primary execution path. Blocking delays introduce non-deterministic timing behavior and can significantly degrade responsiveness in real-time control applications.
 
@@ -534,7 +537,7 @@ Instead, time-dependent behavior is handled through:
 
 This approach ensures that the system remains reactive to incoming control packets at all times.
 
-\subsubsection{Deterministic Execution Order}
+\subsection{Deterministic Execution Order}
 
 The execution order of functional blocks inside the loop is explicitly defined and consistent across iterations. Each iteration processes communication, control logic, and telemetry in the same sequence.
 
@@ -549,7 +552,7 @@ This deterministic structure provides:
 
 Because the order of operations does not change dynamically, system timing can be analyzed and estimated more easily, which is essential for later performance evaluation.
 
-\subsubsection{Fixed-Size Packet Model for Control}
+\subsection{Fixed-Size Packet Model for Control}
 
 Control packets are designed with a fixed-size structure. This simplifies parsing, reduces conditional branching during decoding, and ensures that control updates require a predictable amount of processing time.
 
@@ -564,7 +567,7 @@ The fixed-size packet model provides:
 
 By combining fixed-size control packets with structured validation and deterministic loop execution, the system achieves consistent real-time performance suitable for RC vehicle applications.
 
-\subsubsection{Preparation for Timing Analysis}
+\subsection{Preparation for Timing Analysis}
 
 The architectural decisions described in this section establish a foundation for later timing and performance analysis. Because the firmware follows a polling-based, non-blocking, and deterministic structure, it becomes possible to estimate:
 
@@ -593,13 +596,13 @@ These characteristics are examined in more detail in subsequent chapters.
 
 
 
-\subsection{Modular Firmware Philosophy}
+\section{Modular Firmware Philosophy}
 
 A central design principle of the ESP32 Bluetooth RC Controller is modularity. The firmware is intentionally organized into independent functional modules, each encapsulated within its own header (\texttt{.h}) and implementation (\texttt{.cpp}) files.
 
 This modular structure promotes clarity, maintainability, and scalability, while also serving as an educational example of structured embedded firmware development.
 
-\subsubsection{Separation of Responsibilities}
+\subsection{Separation of Responsibilities}
 
 Each subsystem of the firmware is responsible for a clearly defined functional domain. This separation prevents cross-dependencies between unrelated components and simplifies debugging and feature expansion.
 
@@ -625,7 +628,7 @@ The major functional domains include:
 
 This explicit separation ensures that changes within one module do not unintentionally affect unrelated parts of the system.
 
-\subsubsection{Hardware Abstraction Separation}
+\subsection{Hardware Abstraction Separation}
 
 In addition to functional modularity, the firmware applies hardware abstraction principles. Direct manipulation of GPIO pins, PWM outputs, and communication peripherals is isolated from higher-level control logic.
 
@@ -639,7 +642,7 @@ By separating hardware-specific implementation details from system logic:
 
 This abstraction encourages best practices in embedded systems design and makes the project suitable as a teaching example.
 
-\subsubsection{Educational and Practical Benefits}
+\subsection{Educational and Practical Benefits}
 
 For students and makers, a modular architecture offers several advantages:
 
@@ -652,7 +655,7 @@ For students and makers, a modular architecture offers several advantages:
 
 Instead of a monolithic firmware structure, the system demonstrates how larger embedded projects can be organized into manageable components.
 
-\subsubsection{Scalability and Future Extension}
+\subsection{Scalability and Future Extension}
 
 The modular philosophy allows new capabilities to be added without restructuring the entire firmware. For example:
 
@@ -682,13 +685,13 @@ By combining clear responsibility separation with hardware abstraction and exten
 
 
 
-\subsection{System Capabilities}
+\section{System Capabilities}
 
 The ESP32 Bluetooth RC Controller firmware provides a wide range of functional capabilities intended for real-time vehicle control, monitoring, and experimentation. These capabilities support both practical RC applications and educational exploration of embedded system design.
 
 The system is designed to be flexible and extensible while maintaining clarity and structured behavior.
 
-\subsubsection{Motion Control}
+\subsection{Motion Control}
 
 The firmware supports real-time motion control of an RC platform, including:
 
@@ -702,7 +705,7 @@ The firmware supports real-time motion control of an RC platform, including:
 
 These motion control capabilities enable a wide range of vehicle configurations, from simple RC cars to more advanced robotic platforms.
 
-\subsubsection{Digital Output Control}
+\subsection{Digital Output Control}
 
 The system provides support for auxiliary digital outputs, including:
 
@@ -716,7 +719,7 @@ The system provides support for auxiliary digital outputs, including:
 
 These outputs extend the system beyond basic motion control, allowing richer interaction and experimentation.
 
-\subsubsection{Sensor Integration}
+\subsection{Sensor Integration}
 
 The firmware supports external sensor integration to enhance system awareness and telemetry feedback.
 
@@ -728,7 +731,7 @@ The firmware supports external sensor integration to enhance system awareness an
 
 These capabilities enable users to monitor environmental data, extend digital inputs/outputs, and experiment with additional hardware modules.
 
-\subsubsection{Telemetry and Monitoring Features}
+\subsection{Telemetry and Monitoring Features}
 
 The system provides structured telemetry functionality to enable real-time monitoring from the Android application. Supported telemetry features include:
 
@@ -744,7 +747,7 @@ The system provides structured telemetry functionality to enable real-time monit
 
 These telemetry features create a closed-loop control and monitoring environment, allowing users to observe system behavior while actively controlling the vehicle.
 
-\subsubsection{Platform Flexibility}
+\subsection{Platform Flexibility}
 
 By combining motion control, digital outputs, sensor integration, and structured telemetry, the firmware supports:
 
@@ -761,11 +764,11 @@ The system capabilities are intentionally broad to encourage experimentation, le
 
 
 
-\subsection{System Constraints}
+\section{System Constraints}
 
 While the ESP32 Bluetooth RC Controller firmware provides flexible control and telemetry capabilities, it operates within practical hardware and communication constraints. Understanding these limitations is essential for proper system design, performance evaluation, and future expansion.
 
-\subsubsection{Bluetooth Bandwidth and Latency}
+\subsection{Bluetooth Bandwidth and Latency}
 
 The system relies on Bluetooth Serial Port Profile (SPP) for bidirectional communication. Although sufficient for real-time RC control and structured telemetry, Bluetooth SPP introduces inherent constraints:
 
@@ -777,7 +780,7 @@ The system relies on Bluetooth Serial Port Profile (SPP) for bidirectional commu
 
 These factors influence maximum telemetry throughput and practical control update rates.
 
-\subsubsection{Microcontroller Resource Limits}
+\subsection{Microcontroller Resource Limits}
 
 The ESP32 microcontroller provides substantial computational capability for hobby and educational applications; however, it remains a resource-constrained embedded device.
 
@@ -791,7 +794,7 @@ System limitations include:
 
 Careful memory usage and fixed-size packet structures are used to ensure predictable operation within these limits.
 
-\subsubsection{Fixed Buffer Sizes}
+\subsection{Fixed Buffer Sizes}
 
 Packet reception and processing rely on predefined buffer sizes. While this simplifies memory management and maintains deterministic behavior, it introduces constraints:
 
@@ -803,7 +806,7 @@ Packet reception and processing rely on predefined buffer sizes. While this simp
 
 These design choices favor reliability and simplicity over dynamic allocation flexibility.
 
-\subsubsection{Checksum Simplicity}
+\subsection{Checksum Simplicity}
 
 The communication protocol uses a lightweight checksum mechanism for packet validation. While suitable for educational and hobby-level applications, this approach does not provide the same robustness as more advanced error detection techniques such as CRC.
 
@@ -817,7 +820,7 @@ As a result:
 
 This trade-off aligns with the project's educational and experimental objectives.
 
-\subsubsection{Single-Loop Execution Model}
+\subsection{Single-Loop Execution Model}
 
 The firmware operates within a single main execution loop without a full real-time operating system managing independent tasks.
 
@@ -831,7 +834,7 @@ Consequences of this design include:
 
 However, this simplified model enhances clarity and makes the firmware easier to study and modify.
 
-\subsubsection{Hardware Dependency}
+\subsection{Hardware Dependency}
 
 Although the firmware uses hardware abstraction principles, it is designed specifically for the ESP32 platform. Porting the system to another microcontroller would require:
 
@@ -843,7 +846,7 @@ Although the firmware uses hardware abstraction principles, it is designed speci
 
 Therefore, while modular, the system remains tied to the ESP32 hardware ecosystem.
 
-\subsubsection{Educational Scope}
+\subsection{Educational Scope}
 
 The firmware is intentionally designed for academic, recreational, and DIY applications. It is not intended for:
 
@@ -858,28 +861,7 @@ Its primary objective is to provide a structured, understandable, and expandable
 Recognizing these constraints ensures responsible use of the system and establishes realistic expectations for performance and reliability.
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-\subsection{Document Structure}
+\section{Document Structure}
 
 This document is organized to progressively guide the reader from high-level system concepts to detailed architectural and implementation aspects. The structure follows a top-down approach, beginning with system-level descriptions and advancing toward protocol, firmware architecture, and performance considerations.
 

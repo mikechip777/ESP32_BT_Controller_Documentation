@@ -1,5 +1,254 @@
-\section{Design decisions.}
+\chapter{Design Decisions and Trade-Off Analysis}
 
+\section{Introduction}
 
+This chapter analyzes the principal design decisions taken during the development of the system and evaluates the associated trade-offs.
 
-\subsection{Purpose}
+Rather than merely describing implementation details, this chapter focuses on the reasoning process behind architectural, hardware, and firmware choices.
+
+The discussion covers:
+
+\begin{itemize}
+	\item Microcontroller selection
+	\item Communication protocol design
+	\item Modular firmware structure
+	\item Hardware abstraction strategy
+	\item Real-time execution model
+	\item Expansion methodology
+\end{itemize}
+
+% ------------------------------------------------
+
+\section{Microcontroller Selection}
+
+The selection of the ESP32 microcontroller was based on several factors.
+
+\subsection{Advantages}
+
+\begin{itemize}
+	\item Integrated Bluetooth connectivity
+	\item Sufficient computational resources
+	\item Hardware PWM and multiple communication peripherals
+	\item Low cost relative to capabilities
+\end{itemize}
+
+\subsection{Trade-Offs}
+
+\begin{itemize}
+	\item Increased architectural complexity compared to simpler microcontrollers
+	\item Higher power consumption than minimal 8-bit devices
+	\item More complex development environment
+\end{itemize}
+
+Despite these trade-offs, the integration of wireless capability justified its selection, reducing overall system complexity.
+
+% ------------------------------------------------
+
+\section{Custom Communication Protocol}
+
+A custom binary protocol was designed instead of using standardized text-based formats.
+
+\subsection{Advantages}
+
+\begin{itemize}
+	\item Lower bandwidth usage
+	\item Reduced parsing overhead
+	\item Deterministic packet size
+	\item Explicit checksum validation
+\end{itemize}
+
+\subsection{Trade-Offs}
+
+\begin{itemize}
+	\item Increased development effort
+	\item Reduced human readability
+	\item Requires custom debugging tools
+\end{itemize}
+
+The performance and determinism benefits outweighed the additional development complexity.
+
+% ------------------------------------------------
+
+\section{Modular Firmware Architecture}
+
+The firmware was structured into independent modules.
+
+\subsection{Advantages}
+
+\begin{itemize}
+	\item Improved maintainability
+	\item Clear separation of responsibilities
+	\item Simplified testing
+	\item Scalability support
+\end{itemize}
+
+\subsection{Trade-Offs}
+
+\begin{itemize}
+	\item Slightly increased structural complexity
+	\item More header files and interfaces to manage
+\end{itemize}
+
+The modular design ensures long-term extensibility and code clarity.
+
+% ------------------------------------------------
+
+\section{Hardware Abstraction Layer}
+
+Hardware abstraction was implemented to isolate peripheral-specific details.
+
+\subsection{Advantages}
+
+\begin{itemize}
+	\item Simplified hardware replacement
+	\item Reduced coupling between logic and electrical configuration
+	\item Improved portability
+\end{itemize}
+
+\subsection{Trade-Offs}
+
+\begin{itemize}
+	\item Additional wrapper functions
+	\item Slight performance overhead
+\end{itemize}
+
+Given the processing margin available, abstraction overhead is negligible compared to architectural clarity.
+
+% ------------------------------------------------
+
+\section{Single-Threaded Execution Model}
+
+The system uses a cooperative single-loop execution model rather than an RTOS.
+
+\subsection{Advantages}
+
+\begin{itemize}
+	\item Simpler debugging
+	\item Predictable execution order
+	\item Reduced synchronization complexity
+\end{itemize}
+
+\subsection{Trade-Offs}
+
+\begin{itemize}
+	\item No true parallel task execution
+	\item Timing analysis must ensure non-blocking behavior
+\end{itemize}
+
+For soft real-time RC control, this model provides sufficient determinism without unnecessary complexity.
+
+% ------------------------------------------------
+
+\section{I2C-Based GPIO Expansion}
+
+External GPIO expansion was implemented using an I2C interface.
+
+\subsection{Advantages}
+
+\begin{itemize}
+	\item Efficient pin utilization
+	\item Modular hardware growth
+	\item Reduced PCB complexity
+\end{itemize}
+
+\subsection{Trade-Offs}
+
+\begin{itemize}
+	\item Increased communication latency
+	\item Dependency on shared bus integrity
+\end{itemize}
+
+The flexibility gained from expandable I/O justifies the minor timing overhead.
+
+% ------------------------------------------------
+
+\section{Static Memory Allocation Strategy}
+
+Dynamic memory allocation was intentionally avoided.
+
+\subsection{Advantages}
+
+\begin{itemize}
+	\item Deterministic memory usage
+	\item Elimination of fragmentation risk
+	\item Simplified reliability analysis
+\end{itemize}
+
+\subsection{Trade-Offs}
+
+\begin{itemize}
+	\item Fixed buffer sizes
+	\item Reduced runtime flexibility
+\end{itemize}
+
+Predictability was prioritized over dynamic adaptability due to real-time constraints.
+
+% ------------------------------------------------
+
+\section{Binary Packet Structure}
+
+Fixed-length packet structures were selected instead of variable-length formats.
+
+\subsection{Advantages}
+
+\begin{itemize}
+	\item Simplified parsing logic
+	\item Reduced runtime validation complexity
+	\item Deterministic buffer management
+\end{itemize}
+
+\subsection{Trade-Offs}
+
+\begin{itemize}
+	\item Potential underutilization of packet payload space
+	\item Reduced flexibility for heterogeneous message types
+\end{itemize}
+
+For control systems, determinism was considered more valuable than format flexibility.
+
+% ------------------------------------------------
+
+\section{System Scalability Philosophy}
+
+The system was designed with forward scalability in mind.
+
+Design considerations included:
+
+\begin{itemize}
+	\item Modular firmware layers
+	\item Expandable hardware interfaces
+	\item Clearly defined communication structure
+\end{itemize}
+
+This prevents architectural redesign when integrating new features.
+
+% ------------------------------------------------
+
+\section{Overall Architectural Philosophy}
+
+The overarching design philosophy prioritized:
+
+\begin{itemize}
+	\item Determinism over complexity
+	\item Modularity over monolithic optimization
+	\item Predictability over maximal performance
+	\item Expandability over minimal footprint
+\end{itemize}
+
+These priorities align with engineering best practices for embedded control systems.
+
+% ------------------------------------------------
+
+\section{Summary}
+
+The system design reflects deliberate engineering trade-offs balancing:
+
+\begin{itemize}
+	\item Performance
+	\item Complexity
+	\item Expandability
+	\item Maintainability
+	\item Determinism
+\end{itemize}
+
+Each decision was evaluated not only for immediate functionality but also for long-term system robustness and scalability.

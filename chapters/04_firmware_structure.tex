@@ -1,5 +1,307 @@
-\section{Firmware Structure}
+\chapter{Firmware Structure}
 
+\section{Introduction}
 
+This chapter describes the concrete organization of the firmware source code and the structural implementation of the architectural model defined in Chapter 2.
 
-\subsection{Purpose}
+While Chapter 2 defines logical layers and architectural principles, this chapter explains how those principles are realized in the actual firmware structure.
+
+The firmware is organized using a modular C++ design, with each functional subsystem encapsulated in dedicated header and source files.
+
+% ------------------------------------------------
+
+\section{Source Code Organization Strategy}
+
+The firmware follows a structured separation between:
+
+\begin{itemize}
+	\item Interface definitions (.h files)
+	\item Implementation logic (.cpp files)
+\end{itemize}
+
+Each module exposes only its public interface through its header file, while internal logic remains confined to its implementation file.
+
+This separation enforces:
+
+\begin{itemize}
+	\item Controlled visibility
+	\item Reduced coupling
+	\item Clear responsibility boundaries
+\end{itemize}
+
+% ------------------------------------------------
+
+\section{Main Entry Point Structure}
+
+The firmware entry point consists of the standard embedded structure:
+
+\begin{itemize}
+	\item System initialization phase
+	\item Continuous execution loop
+\end{itemize}
+
+\subsection{Initialization Phase}
+
+During initialization:
+
+\begin{itemize}
+	\item Communication interfaces are configured
+	\item Peripheral drivers are initialized
+	\item GPIO and expansion modules are configured
+	\item Internal state variables are set to default values
+\end{itemize}
+
+All hardware setup is completed before entering the main execution loop.
+
+\subsection{Main Control Loop}
+
+The main loop orchestrates subsystem execution in deterministic order.
+
+Conceptually, the loop performs:
+
+\begin{enumerate}
+	\item Communication processing
+	\item Control state updates
+	\item Actuator refresh
+	\item Sensor acquisition
+	\item Telemetry generation
+\end{enumerate}
+
+No blocking delays are permitted inside loop-executed modules.
+
+% ------------------------------------------------
+
+\section{Module Categories}
+
+The firmware is decomposed into the following major module categories.
+
+\subsection{Communication Module}
+
+Responsible for:
+
+\begin{itemize}
+	\item Receiving raw byte streams
+	\item Detecting packet framing
+	\item Validating checksums
+	\item Extracting structured command data
+	\item Serializing telemetry packets
+\end{itemize}
+
+The communication module does not directly modify hardware outputs.  
+It only updates internal control variables after validation.
+
+% ------------------------------------------------
+
+\subsection{Control and Input Module}
+
+This module translates validated command data into internal state variables.
+
+Responsibilities include:
+
+\begin{itemize}
+	\item Updating target motor speeds
+	\item Updating servo positions
+	\item Updating output flags
+\end{itemize}
+
+It does not perform direct peripheral access.
+
+% ------------------------------------------------
+
+\subsection{Motor Control Module}
+
+Encapsulates motor driver interactions.
+
+Responsibilities:
+
+\begin{itemize}
+	\item PWM signal generation
+	\item Direction control
+	\item Safe state fallback handling
+\end{itemize}
+
+All motor-related hardware configuration is isolated here.
+
+% ------------------------------------------------
+
+\subsection{Servo Control Module}
+
+Handles generation of position signals for:
+
+\begin{itemize}
+	\item Steering servo
+	\item Auxiliary servo
+\end{itemize}
+
+Servo timing precision is maintained independently from communication timing.
+
+% ------------------------------------------------
+
+\subsection{Telemetry Module}
+
+Aggregates data from:
+
+\begin{itemize}
+	\item Sensor interfaces
+	\item Actuator state variables
+	\item Input state variables
+	\item System indicators
+\end{itemize}
+
+This module prepares structured telemetry packets for transmission.
+
+% ------------------------------------------------
+
+\subsection{Sensor Interface Modules}
+
+Each sensor is encapsulated within its own driver module.
+
+Responsibilities:
+
+\begin{itemize}
+	\item Sensor initialization
+	\item Data acquisition
+	\item Data scaling and formatting
+\end{itemize}
+
+Sensor modules expose processed measurements to the telemetry module.
+
+% ------------------------------------------------
+
+\subsection{GPIO Expansion Driver}
+
+Handles communication with external GPIO expansion hardware.
+
+Responsibilities:
+
+\begin{itemize}
+	\item I2C communication management
+	\item Remote digital input reading
+	\item Remote digital output control
+\end{itemize}
+
+Expansion logic is isolated from application control logic.
+
+% ------------------------------------------------
+
+\subsection{Output Management Module}
+
+Manages auxiliary outputs such as:
+
+\begin{itemize}
+	\item LEDs
+	\item Buzzer
+	\item Switch outputs
+\end{itemize}
+
+Outputs are updated deterministically during each control loop iteration.
+
+% ------------------------------------------------
+
+\section{Inter-Module Communication Model}
+
+Modules communicate through:
+
+\begin{itemize}
+	\item Shared state variables
+	\item Controlled function interfaces
+\end{itemize}
+
+Direct cross-module register access is prohibited.
+
+This ensures:
+
+\begin{itemize}
+	\item Predictable data ownership
+	\item Reduced unintended side effects
+	\item Simplified debugging
+\end{itemize}
+
+% ------------------------------------------------
+
+\section{Header File Discipline}
+
+Header files:
+
+\begin{itemize}
+	\item Contain only declarations
+	\item Avoid implementation logic
+	\item Expose minimal necessary interfaces
+\end{itemize}
+
+This reduces compilation dependencies and enforces modular encapsulation.
+
+% ------------------------------------------------
+
+\section{Configuration and Pin Isolation}
+
+Pin definitions and hardware configuration constants are centralized in dedicated configuration files.
+
+This ensures:
+
+\begin{itemize}
+	\item Hardware portability
+	\item Simplified hardware replacement
+	\item Avoidance of hard-coded values
+\end{itemize}
+
+No module contains scattered pin assignments.
+
+% ------------------------------------------------
+
+\section{Error Handling Strategy}
+
+The firmware implements lightweight error handling mechanisms:
+
+\begin{itemize}
+	\item Packet rejection on checksum failure
+	\item Safe actuator state retention on communication loss
+	\item Controlled output states during initialization
+\end{itemize}
+
+Critical error paths avoid system crashes or undefined behavior.
+
+% ------------------------------------------------
+
+\section{Resource Management Considerations}
+
+The implementation minimizes:
+
+\begin{itemize}
+	\item Dynamic memory allocation
+	\item Large stack usage
+	\item Blocking delays
+\end{itemize}
+
+Buffers are statically allocated with fixed sizes to guarantee bounded memory usage.
+
+% ------------------------------------------------
+
+\section{Implementation Consistency with Architecture}
+
+The firmware implementation directly reflects the layered architecture defined in Chapter 2:
+
+\begin{itemize}
+	\item Communication logic isolated from hardware
+	\item Control logic isolated from peripheral registers
+	\item Hardware abstraction centralized
+	\item Modular growth supported
+\end{itemize}
+
+This alignment ensures architectural integrity is preserved in the concrete implementation.
+
+% ------------------------------------------------
+
+\section{Summary}
+
+The firmware structure enforces:
+
+\begin{itemize}
+	\item Modular separation
+	\item Deterministic execution
+	\item Hardware abstraction
+	\item Controlled inter-module interaction
+	\item Expandable feature integration
+\end{itemize}
+
+The following chapter analyzes timing behavior and real-time characteristics of this implementation.

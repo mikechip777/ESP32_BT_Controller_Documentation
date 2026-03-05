@@ -1,5 +1,265 @@
-\section{Protocol Spec}
+\chapter{Communication Protocol Specification}
 
+\section{Protocol Overview}
 
+This chapter defines the structured packet-based communication protocol used for bidirectional data exchange between the embedded firmware and the external Android application.
 
-\subsection{Purpose}
+The protocol is designed to achieve:
+
+\begin{itemize}
+	\item Deterministic packet parsing
+	\item Robust synchronization recovery
+	\item Low processing overhead
+	\item Fixed-length command handling
+	\item Structured telemetry formatting
+\end{itemize}
+
+All communication occurs over a Bluetooth serial transport layer. The protocol operates independently of the underlying physical transport once a byte stream is established.
+
+% ------------------------------------------------
+
+\section{Communication Model}
+
+The communication model is packet-oriented.  
+All data exchanged between the application and firmware is encapsulated within structured packets.
+
+Two packet categories exist:
+
+\begin{itemize}
+	\item Control Packets (Downlink)
+	\item Telemetry Packets (Uplink)
+\end{itemize}
+
+The firmware parser continuously monitors the incoming byte stream and attempts to detect valid packet frames.
+
+% ------------------------------------------------
+
+\section{Packet Framing Strategy}
+
+To guarantee reliable synchronization within a continuous byte stream, each packet contains:
+
+\begin{itemize}
+	\item A Start-of-Frame (SOF) marker
+	\item A Payload section
+	\item A Checksum field
+\end{itemize}
+
+\subsection{General Packet Structure}
+
+\begin{center}
+	\begin{tabular}{|c|c|c|}
+		\hline
+		SOF & Payload & Checksum \\
+		\hline
+	\end{tabular}
+\end{center}
+
+\subsection{Start-of-Frame Marker}
+
+The SOF marker is a predefined byte sequence used to identify the beginning of a valid packet.  
+
+Its purpose is to:
+
+\begin{itemize}
+	\item Allow parser resynchronization after byte loss
+	\item Prevent payload misinterpretation
+	\item Reduce false-positive packet detection
+\end{itemize}
+
+The SOF pattern is unique and not permitted to appear as a valid packet prefix.
+
+% ------------------------------------------------
+
+\section{Control Packet Format}
+
+Control packets are transmitted from the Android application to the firmware.
+
+\subsection{Control Packet Structure}
+
+\begin{center}
+	\begin{tabular}{|c|c|c|c|}
+		\hline
+		SOF & Control Fields & Reserved & Checksum \\
+		\hline
+	\end{tabular}
+\end{center}
+
+\subsection{Control Fields}
+
+The control payload contains fixed-size fields representing actuator commands and output states.
+
+Typical control fields may include:
+
+\begin{itemize}
+	\item Motor speed values
+	\item Steering position
+	\item Auxiliary servo position
+	\item Output enable flags
+\end{itemize}
+
+Each field has:
+
+\begin{itemize}
+	\item Defined byte width
+	\item Defined numerical range
+	\item Defined scaling factor
+\end{itemize}
+
+All control packets are fixed-length to simplify parsing logic and maintain constant processing time.
+
+% ------------------------------------------------
+
+\section{Telemetry Packet Format}
+
+Telemetry packets are transmitted from the firmware to the Android application.
+
+\subsection{Telemetry Packet Structure}
+
+\begin{center}
+	\begin{tabular}{|c|c|c|c|}
+		\hline
+		SOF & Telemetry Fields & Status Flags & Checksum \\
+		\hline
+	\end{tabular}
+\end{center}
+
+\subsection{Telemetry Fields}
+
+Telemetry payload may include:
+
+\begin{itemize}
+	\item Sensor measurements
+	\item Actuator state feedback
+	\item Input states
+	\item System indicators
+\end{itemize}
+
+Telemetry structure is deterministic and ordered to ensure consistent parsing on the application side.
+
+% ------------------------------------------------
+
+\section{Checksum and Error Detection}
+
+Each packet terminates with a checksum byte.
+
+\subsection{Checksum Purpose}
+
+The checksum enables:
+
+\begin{itemize}
+	\item Detection of corrupted packets
+	\item Rejection of malformed data
+	\item Prevention of unsafe actuator updates
+\end{itemize}
+
+\subsection{Checksum Model}
+
+The checksum is computed as a deterministic function of all payload bytes:
+
+\[
+Checksum = f(b_1, b_2, ..., b_n)
+\]
+
+Where:
+
+\begin{itemize}
+	\item $b_i$ represents payload bytes
+	\item $f$ is a defined aggregation function (e.g., modulo sum)
+\end{itemize}
+
+Packets failing checksum validation are discarded without affecting actuator states.
+
+% ------------------------------------------------
+
+\section{Parser Synchronization Model}
+
+The parser operates as a state machine with the following states:
+
+\begin{enumerate}
+	\item Idle (waiting for SOF)
+	\item Receiving Payload
+	\item Validating Checksum
+	\item Packet Accepted / Rejected
+\end{enumerate}
+
+If checksum validation fails, the parser returns to the Idle state and resumes searching for the next SOF marker.
+
+This ensures recovery from:
+
+\begin{itemize}
+	\item Byte loss
+	\item Transmission noise
+	\item Partial packet corruption
+\end{itemize}
+
+% ------------------------------------------------
+
+\section{Timing Characteristics}
+
+Control packets are processed within a single control loop iteration once fully received and validated.
+
+Telemetry packets are generated at a deterministic rate defined by the control loop frequency.
+
+The protocol avoids variable-length parsing to ensure bounded processing time.
+
+% ------------------------------------------------
+
+\section{Protocol Determinism}
+
+The protocol enforces determinism through:
+
+\begin{itemize}
+	\item Fixed packet length
+	\item Defined byte ordering
+	\item Consistent field offsets
+	\item Stateless packet interpretation
+\end{itemize}
+
+This guarantees constant-time decoding complexity.
+
+% ------------------------------------------------
+
+\section{Extensibility Strategy}
+
+Protocol extensibility is achieved through:
+
+\begin{itemize}
+	\item Reserved payload bytes
+	\item Version identifier field (optional)
+	\item Backward-compatible field extension
+\end{itemize}
+
+Future fields may be appended without altering parser stability if packet size constraints are maintained.
+
+% ------------------------------------------------
+
+\section{Protocol Robustness Considerations}
+
+The protocol design accounts for:
+
+\begin{itemize}
+	\item Bluetooth latency variability
+	\item Occasional packet loss
+	\item Transmission jitter
+\end{itemize}
+
+No partial command execution occurs.  
+Only fully validated packets update control variables.
+
+This prevents unintended actuator behavior.
+
+% ------------------------------------------------
+
+\section{Summary}
+
+The communication protocol provides:
+
+\begin{itemize}
+	\item Structured bidirectional packet exchange
+	\item Deterministic decoding behavior
+	\item Error detection via checksum validation
+	\item Synchronization recovery capability
+	\item Fixed processing complexity
+\end{itemize}
+
+The following chapter details how this protocol is implemented within the firmware module structure.

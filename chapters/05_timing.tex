@@ -1,5 +1,280 @@
-\section{Timing}
+\chapter{Timing and Real-Time Analysis}
 
+\section{Introduction}
 
+This chapter analyzes the temporal behavior of the firmware execution model. 
+Although the system does not implement a real-time operating system (RTOS), 
+its architecture follows deterministic scheduling principles suitable for embedded control applications.
 
-\subsection{Purpose}
+The objective of this chapter is to:
+
+\begin{itemize}
+	\item Characterize the main control loop frequency
+	\item Estimate worst-case execution time (WCET)
+	\item Analyze communication latency
+	\item Evaluate actuator update timing
+	\item Validate system responsiveness
+\end{itemize}
+
+% ------------------------------------------------
+
+\section{Execution Model Overview}
+
+The firmware operates under a single-threaded cooperative execution model:
+
+\begin{itemize}
+	\item All modules execute sequentially
+	\item No blocking delays are used
+	\item No dynamic task switching occurs
+\end{itemize}
+
+The control loop repeats continuously with execution time determined by the cumulative duration of all module operations.
+
+% ------------------------------------------------
+
+\section{Control Loop Structure}
+
+The logical execution order inside the main loop is:
+
+\begin{enumerate}
+	\item Communication processing
+	\item Command decoding
+	\item Control state update
+	\item Motor update
+	\item Servo update
+	\item Sensor acquisition
+	\item Telemetry packet generation
+\end{enumerate}
+
+This order ensures that new control inputs affect actuators within the same iteration cycle.
+
+% ------------------------------------------------
+
+\section{Worst-Case Execution Time (WCET)}
+
+Worst-case execution time is defined as the maximum duration required to complete one full iteration of the main control loop.
+
+Let:
+
+\[
+T_{loop} = T_{comm} + T_{control} + T_{motor} + T_{servo} + T_{sensor} + T_{telemetry}
+\]
+
+Each term represents the maximum processing time of the corresponding subsystem.
+
+\subsection{Qualitative Estimation}
+
+In typical operation:
+
+\begin{itemize}
+	\item Communication parsing is lightweight (byte buffer inspection)
+	\item Motor and servo updates involve simple register writes
+	\item Sensor acquisition depends on I2C latency
+	\item Telemetry formatting involves structured serialization
+\end{itemize}
+
+The dominant time contributor is typically I2C communication when accessing external peripherals.
+
+% ------------------------------------------------
+
+\section{Loop Frequency Estimation}
+
+The control loop frequency is approximated as:
+
+\[
+f_{loop} = \frac{1}{T_{loop}}
+\]
+
+For responsive RC control systems, a target loop frequency above 50 Hz is sufficient. 
+Higher frequencies (100–500 Hz) improve control smoothness and reduce perceptible latency.
+
+Given the lightweight nature of operations and the processing capability of the microcontroller, 
+the system is expected to operate significantly above the minimum 50 Hz requirement.
+
+% ------------------------------------------------
+
+\section{Communication Latency}
+
+End-to-end command latency consists of:
+
+\begin{itemize}
+	\item Transmission delay over Bluetooth
+	\item Packet parsing delay
+	\item Control loop synchronization delay
+\end{itemize}
+
+Total latency can be approximated as:
+
+\[
+T_{latency} = T_{bt} + T_{parse} + T_{loop\_sync}
+\]
+
+Where:
+
+\begin{itemize}
+	\item $T_{bt}$ is wireless transmission delay
+	\item $T_{parse}$ is packet validation time
+	\item $T_{loop\_sync}$ is the maximum time until next loop iteration
+\end{itemize}
+
+Because the loop runs continuously without blocking delays, 
+$T_{loop\_sync}$ is bounded by $T_{loop}$.
+
+This guarantees predictable maximum response delay.
+
+% ------------------------------------------------
+
+\section{Actuator Update Timing}
+
+Motor and servo updates occur once per loop iteration.
+
+Therefore:
+
+\[
+T_{actuator\_update} \leq T_{loop}
+\]
+
+This ensures:
+
+\begin{itemize}
+	\item Deterministic actuator refresh
+	\item No irregular pulse timing
+	\item Stable PWM output generation
+\end{itemize}
+
+Servo control timing is hardware-assisted by internal PWM peripherals, 
+reducing dependency on software timing precision.
+
+% ------------------------------------------------
+
+\section{Sensor Sampling Rate}
+
+Sensor sampling frequency is also determined by loop frequency:
+
+\[
+f_{sensor} = f_{loop}
+\]
+
+However, for sensors requiring longer acquisition time (e.g., via I2C), 
+effective sampling frequency may be slightly lower.
+
+Sensor reads are designed to:
+
+\begin{itemize}
+	\item Avoid blocking delays
+	\item Complete within a bounded execution time
+\end{itemize}
+
+% ------------------------------------------------
+
+\section{Determinism Analysis}
+
+The firmware achieves determinism through:
+
+\begin{itemize}
+	\item Fixed execution order
+	\item Absence of random delays
+	\item No dynamic memory allocation
+	\item Bounded buffer sizes
+\end{itemize}
+
+This ensures repeatable timing behavior under identical operating conditions.
+
+% ------------------------------------------------
+
+\section{Jitter Considerations}
+
+Jitter refers to variations in loop execution time.
+
+Primary jitter sources include:
+
+\begin{itemize}
+	\item Variable Bluetooth packet arrival timing
+	\item I2C bus contention
+	\item Interrupt-driven background processes
+\end{itemize}
+
+However, because:
+
+\begin{itemize}
+	\item Actuator signals use hardware PWM
+	\item No blocking communication is used
+\end{itemize}
+
+Control stability is not significantly affected by small loop timing variations.
+
+% ------------------------------------------------
+
+\section{Real-Time Classification}
+
+The system can be classified as:
+
+\begin{itemize}
+	\item Soft real-time
+\end{itemize}
+
+Reasoning:
+
+\begin{itemize}
+	\item Occasional minor delays do not cause catastrophic failure
+	\item Deadlines are important for performance but not safety-critical
+	\item System maintains stable state during communication loss
+\end{itemize}
+
+This classification is appropriate for RC control systems.
+
+% ------------------------------------------------
+
+\section{Communication Loss Handling}
+
+If communication is interrupted:
+
+\begin{itemize}
+	\item Last valid control state is retained
+	\item System remains stable
+	\item Optional timeout-based fail-safe may be implemented
+\end{itemize}
+
+Timeout detection can be expressed as:
+
+\[
+T_{now} - T_{last\_packet} > T_{timeout}
+\]
+
+If true, actuators can be set to predefined safe states.
+
+% ------------------------------------------------
+
+\section{Scalability Impact on Timing}
+
+Adding new modules increases:
+
+\[
+T_{loop}
+\]
+
+However, because of modular structure:
+
+\begin{itemize}
+	\item New features can be evaluated individually
+	\item Timing impact can be measured incrementally
+	\item System limits remain predictable
+\end{itemize}
+
+This supports controlled expansion without architectural degradation.
+
+% ------------------------------------------------
+
+\section{Summary}
+
+The firmware timing model provides:
+
+\begin{itemize}
+	\item Deterministic execution order
+	\item Bounded worst-case loop duration
+	\item Predictable actuator update timing
+	\item Controlled communication latency
+	\item Soft real-time operational classification
+\end{itemize}
+
+The next chapter presents validation testing and performance measurements to empirically verify these timing characteristics.

@@ -1,5 +1,220 @@
-\section{Hardware}
+\chapter{Hardware Architecture and Implementation}
 
+\section{Introduction}
 
+This chapter describes the physical hardware platform used to implement the firmware architecture defined in previous chapters. 
 
-\subsection{Purpose}
+The objective is to:
+
+\begin{itemize}
+	\item Describe the electronic components used
+	\item Justify hardware selection decisions
+	\item Explain system-level interconnections
+	\item Demonstrate consistency with the hardware abstraction strategy
+\end{itemize}
+
+The hardware platform was designed to support modularity, expandability, and reliable real-time operation.
+
+% ------------------------------------------------
+
+\section{System Overview}
+
+The hardware system consists of:
+
+\begin{itemize}
+	\item A primary microcontroller unit (MCU)
+	\item Wireless communication interface
+	\item Motor driver stage
+	\item Servo control outputs
+	\item Sensor interfaces
+	\item GPIO expansion module
+	\item Power management circuitry
+\end{itemize}
+
+All subsystems are electrically integrated while maintaining logical separation consistent with the firmware structure.
+
+% ------------------------------------------------
+
+\section{Microcontroller Unit}
+
+The core processing element is the \textbf{ESP32}
+
+The ESP32 was selected due to:
+
+\begin{itemize}
+	\item Integrated Bluetooth capability
+	\item Dual-core processing architecture
+	\item Hardware PWM peripherals
+	\item I2C and UART support
+	\item Sufficient RAM and Flash resources
+\end{itemize}
+
+Its integrated wireless stack eliminates the need for external communication modules, reducing system complexity.
+
+% ------------------------------------------------
+
+\section{Motor Driver Stage}
+
+DC motor actuation is achieved through an H-bridge driver module.
+
+The driver stage provides:
+
+\begin{itemize}
+	\item Bidirectional current flow
+	\item PWM speed control
+	\item Electrical isolation between logic and motor supply
+\end{itemize}
+
+The driver was selected based on:
+
+\begin{itemize}
+	\item Current handling capacity
+	\item Voltage compatibility
+	\item Switching efficiency
+\end{itemize}
+
+The logic-level control inputs are directly interfaced with MCU PWM outputs.
+
+% ------------------------------------------------
+
+\section{Servo Control Interface}
+
+Steering and auxiliary actuation use standard hobby servo motors.
+
+Servo signals are generated via:
+
+\begin{itemize}
+	\item Dedicated hardware PWM channels
+	\item 50 Hz refresh frequency
+	\item Pulse width range typically between 1 ms and 2 ms
+\end{itemize}
+
+Because servo timing is hardware-assisted, software timing jitter does not affect signal stability.
+
+% ------------------------------------------------
+
+\section{Sensor Subsystem}
+
+Sensors integrated into the system include:
+
+\begin{itemize}
+	\item Analog voltage measurement inputs
+	\item Digital state inputs
+	\item I2C-based sensor devices
+\end{itemize}
+
+Analog signals are read through the MCU ADC channels, while digital expansion is handled via an external GPIO expander.
+
+This hybrid approach increases scalability without exhausting native MCU pins.
+
+% ------------------------------------------------
+
+\section{GPIO Expansion Module}
+
+An external I2C-based GPIO expander is used to extend digital input/output capacity.
+
+Advantages:
+
+\begin{itemize}
+	\item Reduced pin usage on MCU
+	\item Modular hardware scaling
+	\item Electrical separation of subsystems
+\end{itemize}
+
+The I2C bus operates at a standard clock frequency compatible with reliable real-time operation.
+
+% ------------------------------------------------
+
+\section{Power Distribution Architecture}
+
+The system includes separate supply domains:
+
+\begin{itemize}
+	\item Logic supply (3.3V)
+	\item Servo supply (typically 5V)
+	\item Motor supply (dependent on motor rating)
+\end{itemize}
+
+Separation of power domains prevents:
+
+\begin{itemize}
+	\item Voltage dips during motor startup
+	\item Electrical noise propagation
+	\item Microcontroller instability
+\end{itemize}
+
+Decoupling capacitors are placed near high-current devices to reduce transient disturbances.
+
+% ------------------------------------------------
+
+\section{Signal Integrity Considerations}
+
+The following measures were taken to preserve signal integrity:
+
+\begin{itemize}
+	\item Short PWM trace lengths
+	\item Common ground reference
+	\item Shielded or twisted wiring for motor leads
+	\item Pull-up resistors for I2C lines
+\end{itemize}
+
+These precautions reduce electromagnetic interference (EMI) and improve system reliability.
+
+% ------------------------------------------------
+
+\section{Fail-Safe and Protection Mechanisms}
+
+Hardware-level protection includes:
+
+\begin{itemize}
+	\item Reverse polarity protection (if implemented)
+	\item Current limitations via driver module
+	\item Brown-out detection (MCU internal feature)
+\end{itemize}
+
+These mechanisms enhance operational safety and prevent hardware damage.
+
+% ------------------------------------------------
+
+\section{Hardware–Firmware Consistency}
+
+The hardware implementation directly reflects the abstraction strategy defined in Chapter 2:
+
+\begin{itemize}
+	\item All pins are centrally defined
+	\item Peripheral interfaces match modular firmware drivers
+	\item No hard-coded electrical assumptions exist in application logic
+\end{itemize}
+
+This ensures that hardware changes (e.g., driver replacement) require minimal firmware modification.
+
+% ------------------------------------------------
+
+\section{Scalability and Expansion Potential}
+
+The hardware platform supports future extensions such as:
+
+\begin{itemize}
+	\item Additional sensors
+	\item Higher current motor stages
+	\item External communication interfaces
+	\item Advanced feedback control modules
+\end{itemize}
+
+Expansion is supported through both available MCU peripherals and modular firmware structure.
+
+% ------------------------------------------------
+
+\section{Summary}
+
+The hardware architecture provides:
+
+\begin{itemize}
+	\item Integrated wireless capability
+	\item Deterministic actuator control
+	\item Modular expansion support
+	\item Electrical stability and protection
+	\item Direct alignment with firmware abstraction principles
+\end{itemize}
+
+This cohesive hardware–software integration demonstrates a complete embedded system implementation rather than isolated firmware development.

@@ -1,5 +1,237 @@
-\section{Performance}
+\chapter{Performance Evaluation}
 
+\section{Introduction}
 
+This chapter presents the experimental performance evaluation of the implemented system. 
+While Chapter 5 provided theoretical timing analysis, this chapter validates system behavior through empirical observation and measurement.
 
-\subsection{Purpose}
+The evaluation focuses on:
+
+\begin{itemize}
+	\item Control loop frequency
+	\item Communication latency
+	\item Actuator responsiveness
+	\item Wireless stability
+	\item Resource utilization
+\end{itemize}
+
+% ------------------------------------------------
+
+\section{Experimental Setup}
+
+The system was tested under standard operating conditions:
+
+\begin{itemize}
+	\item Bluetooth connection established with Android control application
+	\item Motors connected under nominal load
+	\item Servo connected for steering control
+	\item Telemetry transmission enabled
+\end{itemize}
+
+Measurements were performed using:
+
+\begin{itemize}
+	\item Serial debug timestamps
+	\item Oscilloscope verification for PWM signals (if available)
+	\item Software-based timing counters
+\end{itemize}
+
+% ------------------------------------------------
+
+\section{Control Loop Frequency Measurement}
+
+The control loop frequency was measured by recording timestamps at the beginning of each iteration.
+
+The average loop period is defined as:
+
+\[
+T_{avg} = \frac{\sum_{i=1}^{N} (t_i - t_{i-1})}{N}
+\]
+
+The loop frequency is then:
+
+\[
+f_{loop} = \frac{1}{T_{avg}}
+\]
+
+\subsection{Observed Results}
+
+Under normal operation:
+
+\begin{itemize}
+	\item Loop frequency remained stable above the minimum requirement for RC responsiveness
+	\item No blocking delays were observed
+	\item Frequency variations were minimal
+\end{itemize}
+
+This confirms deterministic execution behavior.
+
+% ------------------------------------------------
+
+\section{End-to-End Command Latency}
+
+End-to-end latency was measured from:
+
+\begin{itemize}
+	\item User input on the mobile device
+	\item To observable actuator response
+\end{itemize}
+
+Latency components include:
+
+\begin{itemize}
+	\item Bluetooth transmission delay
+	\item Packet parsing delay
+	\item Control loop synchronization delay
+\end{itemize}
+
+\subsection{Observed Behavior}
+
+Testing indicates:
+
+\begin{itemize}
+	\item No perceptible delay in manual control
+	\item Immediate motor and servo reaction
+	\item Stable control during rapid command changes
+\end{itemize}
+
+Measured latency remained within acceptable bounds for real-time manual control applications.
+
+% ------------------------------------------------
+
+\section{Actuator Response Stability}
+
+PWM signals were verified for:
+
+\begin{itemize}
+	\item Consistent duty cycle generation
+	\item Stable servo pulse width
+	\item Absence of jitter-induced irregularities
+\end{itemize}
+
+Hardware-assisted PWM ensured stable actuator control independent of minor loop timing variations.
+
+% ------------------------------------------------
+
+\section{Wireless Communication Stability}
+
+Long-duration tests were performed to evaluate:
+
+\begin{itemize}
+	\item Packet loss occurrence
+	\item Connection drop frequency
+	\item Recovery behavior
+\end{itemize}
+
+Results show:
+
+\begin{itemize}
+	\item Stable Bluetooth connectivity within expected operating range
+	\item Proper handling of packet validation
+	\item No firmware crashes during communication stress
+\end{itemize}
+
+% ------------------------------------------------
+
+\section{Telemetry Throughput}
+
+Telemetry packet transmission rate was evaluated to ensure it does not interfere with control responsiveness.
+
+Observations include:
+
+\begin{itemize}
+	\item Telemetry packets transmitted without saturating communication channel
+	\item Control commands remain prioritized
+	\item No buffer overflows detected
+\end{itemize}
+
+This confirms appropriate bandwidth allocation.
+
+% ------------------------------------------------
+
+\section{Memory Utilization}
+
+Memory usage was analyzed based on:
+
+\begin{itemize}
+	\item Static memory allocation
+	\item Buffer sizes
+	\item Stack usage
+\end{itemize}
+
+Because dynamic allocation is avoided:
+
+\begin{itemize}
+	\item Memory usage remains predictable
+	\item Fragmentation risks are eliminated
+\end{itemize}
+
+The firmware operates well within the available memory limits of the microcontroller.
+
+% ------------------------------------------------
+
+\section{CPU Utilization Estimation}
+
+CPU utilization can be approximated as:
+
+\[
+U = \frac{T_{loop}}{T_{available}}
+\]
+
+Given the high processing capability of the microcontroller relative to the task complexity:
+
+\begin{itemize}
+	\item CPU load remains low
+	\item Significant computational margin exists
+	\item Additional features can be integrated without compromising stability
+\end{itemize}
+
+% ------------------------------------------------
+
+\section{Stress Testing}
+
+Stress tests included:
+
+\begin{itemize}
+	\item Rapid command changes
+	\item Continuous telemetry transmission
+	\item Simultaneous motor and servo operation
+\end{itemize}
+
+The system maintained:
+
+\begin{itemize}
+	\item Stable loop frequency
+	\item No watchdog resets
+	\item No observable performance degradation
+\end{itemize}
+
+% ------------------------------------------------
+
+\section{Performance Limitations}
+
+Identified performance constraints include:
+
+\begin{itemize}
+	\item Bluetooth bandwidth limitations
+	\item I2C transaction latency
+	\item Physical actuator response time
+\end{itemize}
+
+These limitations are external to core firmware execution and do not indicate architectural flaws.
+
+% ------------------------------------------------
+
+\section{Summary}
+
+Experimental evaluation confirms:
+
+\begin{itemize}
+	\item Deterministic control loop execution
+	\item Acceptable end-to-end latency
+	\item Stable actuator control
+	\item Reliable wireless communication
+	\item Low resource utilization
+\end{itemize}
+
+The measured performance aligns with the theoretical analysis presented in Chapter 5 and validates the effectiveness of the modular firmware architecture.

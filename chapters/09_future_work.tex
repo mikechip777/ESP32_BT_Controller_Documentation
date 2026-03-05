@@ -1,6 +1,209 @@
-\section{Future work}
+\chapter{Future Work}
 
+\section{Introduction}
 
+Although the implemented system satisfies its functional and performance objectives, 
+multiple opportunities exist for further improvement and expansion.
 
-\subsection{Purpose}
+This chapter outlines potential future developments that could enhance system capability, 
+robustness, scalability, and technological sophistication.
 
+% ------------------------------------------------
+
+\section{Closed-Loop Control Implementation}
+
+The current system operates primarily under open-loop control for motor speed and steering position.
+
+Future work may include:
+
+\begin{itemize}
+	\item Integration of wheel encoders
+	\item Implementation of PID speed control
+	\item Closed-loop steering angle correction
+\end{itemize}
+
+Closed-loop control would improve:
+
+\begin{itemize}
+	\item Motion accuracy
+	\item Load compensation
+	\item Terrain adaptability
+\end{itemize}
+
+% ------------------------------------------------
+
+\section{Migration to Real-Time Operating System}
+
+While the cooperative loop model has proven sufficient, 
+migration to an RTOS could provide:
+
+\begin{itemize}
+	\item Task prioritization
+	\item Independent timing domains
+	\item Improved scalability
+	\item Deterministic multi-task scheduling
+\end{itemize}
+
+An RTOS-based implementation would be especially beneficial if the system integrates:
+
+\begin{itemize}
+	\item Video streaming
+	\item Advanced sensor fusion
+	\item Autonomous navigation algorithms
+\end{itemize}
+
+% ------------------------------------------------
+
+\section{Advanced Communication Protocol}
+
+Enhancements to the custom communication protocol may include:
+
+\begin{itemize}
+	\item Packet sequencing and acknowledgment
+	\item Encryption for secure communication
+	\item Adaptive data rate control
+	\item Error correction mechanisms
+\end{itemize}
+
+These additions would improve reliability in high-interference environments.
+
+% ------------------------------------------------
+
+\section{Wi-Fi and Internet Connectivity}
+
+Expanding beyond Bluetooth communication could enable:
+
+\begin{itemize}
+	\item Remote control over Wi-Fi
+	\item Cloud telemetry logging
+	\item Over-the-air firmware updates
+	\item Multi-user control sessions
+\end{itemize}
+
+Internet connectivity would transform the system from a local controller into a distributed control platform.
+
+% ------------------------------------------------
+
+\section{Energy Optimization}
+
+Future revisions may include:
+
+\begin{itemize}
+	\item Dynamic frequency scaling
+	\item Sleep mode implementation
+	\item Battery monitoring and management system
+	\item Power-efficient communication scheduling
+\end{itemize}
+
+Energy optimization would extend operational time in battery-powered deployments.
+
+% ------------------------------------------------
+
+\section{Autonomous Operation Capabilities}
+
+The current system focuses on manual control. 
+
+Future work may incorporate:
+
+\begin{itemize}
+	\item Obstacle detection
+	\item Path planning algorithms
+	\item GPS-based navigation
+	\item Sensor fusion frameworks
+\end{itemize}
+
+This would enable partial or fully autonomous operation modes.
+
+% ------------------------------------------------
+
+\section{Improved Telemetry and Data Analytics}
+
+Telemetry functionality could be extended to include:
+
+\begin{itemize}
+	\item Real-time performance logging
+	\item Data visualization dashboards
+	\item Long-term storage for performance analysis
+	\item Predictive maintenance indicators
+\end{itemize}
+
+Data-driven analysis would enhance system monitoring and diagnostics.
+
+% ------------------------------------------------
+
+\section{Custom PCB Design}
+
+The current implementation may use development boards and modular drivers.
+
+Future hardware iterations could include:
+
+\begin{itemize}
+	\item Fully integrated custom PCB
+	\item Optimized trace routing
+	\item Reduced physical footprint
+	\item Improved EMI shielding
+\end{itemize}
+
+A custom PCB would improve mechanical robustness and production readiness.
+
+% ------------------------------------------------
+
+\section{Mechanical System Integration}
+
+Further integration between firmware and mechanical systems may include:
+
+\begin{itemize}
+	\item Suspension feedback sensors
+	\item Load measurement systems
+	\item Torque monitoring
+\end{itemize}
+
+Tighter integration would allow advanced vehicle dynamics control.
+
+% ------------------------------------------------
+
+\section{Scalability to Multi-Vehicle Systems}
+
+The architecture could be extended to support:
+
+\begin{itemize}
+	\item Multiple vehicles under centralized control
+	\item Swarm coordination algorithms
+	\item Distributed telemetry aggregation
+\end{itemize}
+
+This would require protocol redesign and communication arbitration mechanisms.
+
+% ------------------------------------------------
+
+\section{Artificial Intelligence Integration}
+
+Future versions may integrate:
+
+\begin{itemize}
+	\item Machine learning for adaptive control
+	\item Computer vision modules
+	\item Behavioral learning systems
+\end{itemize}
+
+These features would significantly increase system autonomy and complexity.
+
+% ------------------------------------------------
+
+\section{Summary}
+
+The presented system establishes a modular and scalable embedded control platform.
+
+Future developments may enhance:
+
+\begin{itemize}
+	\item Control precision
+	\item Communication robustness
+	\item Energy efficiency
+	\item Autonomy level
+	\item Hardware integration
+\end{itemize}
+
+The current architecture was intentionally designed to accommodate such expansions without requiring fundamental redesign.
+
+This confirms that the project serves not only as a functional implementation but also as a foundation for continued technological advancement.
