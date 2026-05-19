@@ -1,0 +1,434 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+  width="1120"
+  height="1020"
+  viewBox="0 0 1120 1020"
+  version="1.1"
+  inkscape:version="1.3">
+  <title>Light theme badge numbers 0 to 100</title>
+  <desc>Light theme filled blue circular badges numbered 0 to 100, with bold high-contrast digits for Inkscape editing.</desc>
+  <style>
+    .badge-circle {
+      fill: #1D6FE8;
+      stroke: #1557C0;
+      stroke-opacity: 0.5;
+      stroke-width: 4;
+    }
+
+    .badge-digit {
+      fill: #FFFFFF;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 40px;
+      font-weight: 700;
+      text-anchor: middle;
+      dominant-baseline: central;
+    }
+  </style>
+
+  <g id="number-0">
+    <circle class="badge-circle" cx="60" cy="60" r="42" />
+    <text class="badge-digit" x="60" y="62">0</text>
+  </g>
+  <g id="number-1">
+    <circle class="badge-circle" cx="160" cy="60" r="42" />
+    <text class="badge-digit" x="160" y="62">1</text>
+  </g>
+  <g id="number-2">
+    <circle class="badge-circle" cx="260" cy="60" r="42" />
+    <text class="badge-digit" x="260" y="62">2</text>
+  </g>
+  <g id="number-3">
+    <circle class="badge-circle" cx="360" cy="60" r="42" />
+    <text class="badge-digit" x="360" y="62">3</text>
+  </g>
+  <g id="number-4">
+    <circle class="badge-circle" cx="460" cy="60" r="42" />
+    <text class="badge-digit" x="460" y="62">4</text>
+  </g>
+  <g id="number-5">
+    <circle class="badge-circle" cx="560" cy="60" r="42" />
+    <text class="badge-digit" x="560" y="62">5</text>
+  </g>
+  <g id="number-6">
+    <circle class="badge-circle" cx="660" cy="60" r="42" />
+    <text class="badge-digit" x="660" y="62">6</text>
+  </g>
+  <g id="number-7">
+    <circle class="badge-circle" cx="760" cy="60" r="42" />
+    <text class="badge-digit" x="760" y="62">7</text>
+  </g>
+  <g id="number-8">
+    <circle class="badge-circle" cx="860" cy="60" r="42" />
+    <text class="badge-digit" x="860" y="62">8</text>
+  </g>
+  <g id="number-9">
+    <circle class="badge-circle" cx="960" cy="60" r="42" />
+    <text class="badge-digit" x="960" y="62">9</text>
+  </g>
+  <g id="number-10">
+    <circle class="badge-circle" cx="1060" cy="60" r="42" />
+    <text class="badge-digit" x="1060" y="62">10</text>
+  </g>
+  <g id="number-11">
+    <circle class="badge-circle" cx="60" cy="160" r="42" />
+    <text class="badge-digit" x="60" y="162">11</text>
+  </g>
+  <g id="number-12">
+    <circle class="badge-circle" cx="160" cy="160" r="42" />
+    <text class="badge-digit" x="160" y="162">12</text>
+  </g>
+  <g id="number-13">
+    <circle class="badge-circle" cx="260" cy="160" r="42" />
+    <text class="badge-digit" x="260" y="162">13</text>
+  </g>
+  <g id="number-14">
+    <circle class="badge-circle" cx="360" cy="160" r="42" />
+    <text class="badge-digit" x="360" y="162">14</text>
+  </g>
+  <g id="number-15">
+    <circle class="badge-circle" cx="460" cy="160" r="42" />
+    <text class="badge-digit" x="460" y="162">15</text>
+  </g>
+  <g id="number-16">
+    <circle class="badge-circle" cx="560" cy="160" r="42" />
+    <text class="badge-digit" x="560" y="162">16</text>
+  </g>
+  <g id="number-17">
+    <circle class="badge-circle" cx="660" cy="160" r="42" />
+    <text class="badge-digit" x="660" y="162">17</text>
+  </g>
+  <g id="number-18">
+    <circle class="badge-circle" cx="760" cy="160" r="42" />
+    <text class="badge-digit" x="760" y="162">18</text>
+  </g>
+  <g id="number-19">
+    <circle class="badge-circle" cx="860" cy="160" r="42" />
+    <text class="badge-digit" x="860" y="162">19</text>
+  </g>
+  <g id="number-20">
+    <circle class="badge-circle" cx="960" cy="160" r="42" />
+    <text class="badge-digit" x="960" y="162">20</text>
+  </g>
+  <g id="number-21">
+    <circle class="badge-circle" cx="1060" cy="160" r="42" />
+    <text class="badge-digit" x="1060" y="162">21</text>
+  </g>
+  <g id="number-22">
+    <circle class="badge-circle" cx="60" cy="260" r="42" />
+    <text class="badge-digit" x="60" y="262">22</text>
+  </g>
+  <g id="number-23">
+    <circle class="badge-circle" cx="160" cy="260" r="42" />
+    <text class="badge-digit" x="160" y="262">23</text>
+  </g>
+  <g id="number-24">
+    <circle class="badge-circle" cx="260" cy="260" r="42" />
+    <text class="badge-digit" x="260" y="262">24</text>
+  </g>
+  <g id="number-25">
+    <circle class="badge-circle" cx="360" cy="260" r="42" />
+    <text class="badge-digit" x="360" y="262">25</text>
+  </g>
+  <g id="number-26">
+    <circle class="badge-circle" cx="460" cy="260" r="42" />
+    <text class="badge-digit" x="460" y="262">26</text>
+  </g>
+  <g id="number-27">
+    <circle class="badge-circle" cx="560" cy="260" r="42" />
+    <text class="badge-digit" x="560" y="262">27</text>
+  </g>
+  <g id="number-28">
+    <circle class="badge-circle" cx="660" cy="260" r="42" />
+    <text class="badge-digit" x="660" y="262">28</text>
+  </g>
+  <g id="number-29">
+    <circle class="badge-circle" cx="760" cy="260" r="42" />
+    <text class="badge-digit" x="760" y="262">29</text>
+  </g>
+  <g id="number-30">
+    <circle class="badge-circle" cx="860" cy="260" r="42" />
+    <text class="badge-digit" x="860" y="262">30</text>
+  </g>
+  <g id="number-31">
+    <circle class="badge-circle" cx="960" cy="260" r="42" />
+    <text class="badge-digit" x="960" y="262">31</text>
+  </g>
+  <g id="number-32">
+    <circle class="badge-circle" cx="1060" cy="260" r="42" />
+    <text class="badge-digit" x="1060" y="262">32</text>
+  </g>
+  <g id="number-33">
+    <circle class="badge-circle" cx="60" cy="360" r="42" />
+    <text class="badge-digit" x="60" y="362">33</text>
+  </g>
+  <g id="number-34">
+    <circle class="badge-circle" cx="160" cy="360" r="42" />
+    <text class="badge-digit" x="160" y="362">34</text>
+  </g>
+  <g id="number-35">
+    <circle class="badge-circle" cx="260" cy="360" r="42" />
+    <text class="badge-digit" x="260" y="362">35</text>
+  </g>
+  <g id="number-36">
+    <circle class="badge-circle" cx="360" cy="360" r="42" />
+    <text class="badge-digit" x="360" y="362">36</text>
+  </g>
+  <g id="number-37">
+    <circle class="badge-circle" cx="460" cy="360" r="42" />
+    <text class="badge-digit" x="460" y="362">37</text>
+  </g>
+  <g id="number-38">
+    <circle class="badge-circle" cx="560" cy="360" r="42" />
+    <text class="badge-digit" x="560" y="362">38</text>
+  </g>
+  <g id="number-39">
+    <circle class="badge-circle" cx="660" cy="360" r="42" />
+    <text class="badge-digit" x="660" y="362">39</text>
+  </g>
+  <g id="number-40">
+    <circle class="badge-circle" cx="760" cy="360" r="42" />
+    <text class="badge-digit" x="760" y="362">40</text>
+  </g>
+  <g id="number-41">
+    <circle class="badge-circle" cx="860" cy="360" r="42" />
+    <text class="badge-digit" x="860" y="362">41</text>
+  </g>
+  <g id="number-42">
+    <circle class="badge-circle" cx="960" cy="360" r="42" />
+    <text class="badge-digit" x="960" y="362">42</text>
+  </g>
+  <g id="number-43">
+    <circle class="badge-circle" cx="1060" cy="360" r="42" />
+    <text class="badge-digit" x="1060" y="362">43</text>
+  </g>
+  <g id="number-44">
+    <circle class="badge-circle" cx="60" cy="460" r="42" />
+    <text class="badge-digit" x="60" y="462">44</text>
+  </g>
+  <g id="number-45">
+    <circle class="badge-circle" cx="160" cy="460" r="42" />
+    <text class="badge-digit" x="160" y="462">45</text>
+  </g>
+  <g id="number-46">
+    <circle class="badge-circle" cx="260" cy="460" r="42" />
+    <text class="badge-digit" x="260" y="462">46</text>
+  </g>
+  <g id="number-47">
+    <circle class="badge-circle" cx="360" cy="460" r="42" />
+    <text class="badge-digit" x="360" y="462">47</text>
+  </g>
+  <g id="number-48">
+    <circle class="badge-circle" cx="460" cy="460" r="42" />
+    <text class="badge-digit" x="460" y="462">48</text>
+  </g>
+  <g id="number-49">
+    <circle class="badge-circle" cx="560" cy="460" r="42" />
+    <text class="badge-digit" x="560" y="462">49</text>
+  </g>
+  <g id="number-50">
+    <circle class="badge-circle" cx="660" cy="460" r="42" />
+    <text class="badge-digit" x="660" y="462">50</text>
+  </g>
+  <g id="number-51">
+    <circle class="badge-circle" cx="760" cy="460" r="42" />
+    <text class="badge-digit" x="760" y="462">51</text>
+  </g>
+  <g id="number-52">
+    <circle class="badge-circle" cx="860" cy="460" r="42" />
+    <text class="badge-digit" x="860" y="462">52</text>
+  </g>
+  <g id="number-53">
+    <circle class="badge-circle" cx="960" cy="460" r="42" />
+    <text class="badge-digit" x="960" y="462">53</text>
+  </g>
+  <g id="number-54">
+    <circle class="badge-circle" cx="1060" cy="460" r="42" />
+    <text class="badge-digit" x="1060" y="462">54</text>
+  </g>
+  <g id="number-55">
+    <circle class="badge-circle" cx="60" cy="560" r="42" />
+    <text class="badge-digit" x="60" y="562">55</text>
+  </g>
+  <g id="number-56">
+    <circle class="badge-circle" cx="160" cy="560" r="42" />
+    <text class="badge-digit" x="160" y="562">56</text>
+  </g>
+  <g id="number-57">
+    <circle class="badge-circle" cx="260" cy="560" r="42" />
+    <text class="badge-digit" x="260" y="562">57</text>
+  </g>
+  <g id="number-58">
+    <circle class="badge-circle" cx="360" cy="560" r="42" />
+    <text class="badge-digit" x="360" y="562">58</text>
+  </g>
+  <g id="number-59">
+    <circle class="badge-circle" cx="460" cy="560" r="42" />
+    <text class="badge-digit" x="460" y="562">59</text>
+  </g>
+  <g id="number-60">
+    <circle class="badge-circle" cx="560" cy="560" r="42" />
+    <text class="badge-digit" x="560" y="562">60</text>
+  </g>
+  <g id="number-61">
+    <circle class="badge-circle" cx="660" cy="560" r="42" />
+    <text class="badge-digit" x="660" y="562">61</text>
+  </g>
+  <g id="number-62">
+    <circle class="badge-circle" cx="760" cy="560" r="42" />
+    <text class="badge-digit" x="760" y="562">62</text>
+  </g>
+  <g id="number-63">
+    <circle class="badge-circle" cx="860" cy="560" r="42" />
+    <text class="badge-digit" x="860" y="562">63</text>
+  </g>
+  <g id="number-64">
+    <circle class="badge-circle" cx="960" cy="560" r="42" />
+    <text class="badge-digit" x="960" y="562">64</text>
+  </g>
+  <g id="number-65">
+    <circle class="badge-circle" cx="1060" cy="560" r="42" />
+    <text class="badge-digit" x="1060" y="562">65</text>
+  </g>
+  <g id="number-66">
+    <circle class="badge-circle" cx="60" cy="660" r="42" />
+    <text class="badge-digit" x="60" y="662">66</text>
+  </g>
+  <g id="number-67">
+    <circle class="badge-circle" cx="160" cy="660" r="42" />
+    <text class="badge-digit" x="160" y="662">67</text>
+  </g>
+  <g id="number-68">
+    <circle class="badge-circle" cx="260" cy="660" r="42" />
+    <text class="badge-digit" x="260" y="662">68</text>
+  </g>
+  <g id="number-69">
+    <circle class="badge-circle" cx="360" cy="660" r="42" />
+    <text class="badge-digit" x="360" y="662">69</text>
+  </g>
+  <g id="number-70">
+    <circle class="badge-circle" cx="460" cy="660" r="42" />
+    <text class="badge-digit" x="460" y="662">70</text>
+  </g>
+  <g id="number-71">
+    <circle class="badge-circle" cx="560" cy="660" r="42" />
+    <text class="badge-digit" x="560" y="662">71</text>
+  </g>
+  <g id="number-72">
+    <circle class="badge-circle" cx="660" cy="660" r="42" />
+    <text class="badge-digit" x="660" y="662">72</text>
+  </g>
+  <g id="number-73">
+    <circle class="badge-circle" cx="760" cy="660" r="42" />
+    <text class="badge-digit" x="760" y="662">73</text>
+  </g>
+  <g id="number-74">
+    <circle class="badge-circle" cx="860" cy="660" r="42" />
+    <text class="badge-digit" x="860" y="662">74</text>
+  </g>
+  <g id="number-75">
+    <circle class="badge-circle" cx="960" cy="660" r="42" />
+    <text class="badge-digit" x="960" y="662">75</text>
+  </g>
+  <g id="number-76">
+    <circle class="badge-circle" cx="1060" cy="660" r="42" />
+    <text class="badge-digit" x="1060" y="662">76</text>
+  </g>
+  <g id="number-77">
+    <circle class="badge-circle" cx="60" cy="760" r="42" />
+    <text class="badge-digit" x="60" y="762">77</text>
+  </g>
+  <g id="number-78">
+    <circle class="badge-circle" cx="160" cy="760" r="42" />
+    <text class="badge-digit" x="160" y="762">78</text>
+  </g>
+  <g id="number-79">
+    <circle class="badge-circle" cx="260" cy="760" r="42" />
+    <text class="badge-digit" x="260" y="762">79</text>
+  </g>
+  <g id="number-80">
+    <circle class="badge-circle" cx="360" cy="760" r="42" />
+    <text class="badge-digit" x="360" y="762">80</text>
+  </g>
+  <g id="number-81">
+    <circle class="badge-circle" cx="460" cy="760" r="42" />
+    <text class="badge-digit" x="460" y="762">81</text>
+  </g>
+  <g id="number-82">
+    <circle class="badge-circle" cx="560" cy="760" r="42" />
+    <text class="badge-digit" x="560" y="762">82</text>
+  </g>
+  <g id="number-83">
+    <circle class="badge-circle" cx="660" cy="760" r="42" />
+    <text class="badge-digit" x="660" y="762">83</text>
+  </g>
+  <g id="number-84">
+    <circle class="badge-circle" cx="760" cy="760" r="42" />
+    <text class="badge-digit" x="760" y="762">84</text>
+  </g>
+  <g id="number-85">
+    <circle class="badge-circle" cx="860" cy="760" r="42" />
+    <text class="badge-digit" x="860" y="762">85</text>
+  </g>
+  <g id="number-86">
+    <circle class="badge-circle" cx="960" cy="760" r="42" />
+    <text class="badge-digit" x="960" y="762">86</text>
+  </g>
+  <g id="number-87">
+    <circle class="badge-circle" cx="1060" cy="760" r="42" />
+    <text class="badge-digit" x="1060" y="762">87</text>
+  </g>
+  <g id="number-88">
+    <circle class="badge-circle" cx="60" cy="860" r="42" />
+    <text class="badge-digit" x="60" y="862">88</text>
+  </g>
+  <g id="number-89">
+    <circle class="badge-circle" cx="160" cy="860" r="42" />
+    <text class="badge-digit" x="160" y="862">89</text>
+  </g>
+  <g id="number-90">
+    <circle class="badge-circle" cx="260" cy="860" r="42" />
+    <text class="badge-digit" x="260" y="862">90</text>
+  </g>
+  <g id="number-91">
+    <circle class="badge-circle" cx="360" cy="860" r="42" />
+    <text class="badge-digit" x="360" y="862">91</text>
+  </g>
+  <g id="number-92">
+    <circle class="badge-circle" cx="460" cy="860" r="42" />
+    <text class="badge-digit" x="460" y="862">92</text>
+  </g>
+  <g id="number-93">
+    <circle class="badge-circle" cx="560" cy="860" r="42" />
+    <text class="badge-digit" x="560" y="862">93</text>
+  </g>
+  <g id="number-94">
+    <circle class="badge-circle" cx="660" cy="860" r="42" />
+    <text class="badge-digit" x="660" y="862">94</text>
+  </g>
+  <g id="number-95">
+    <circle class="badge-circle" cx="760" cy="860" r="42" />
+    <text class="badge-digit" x="760" y="862">95</text>
+  </g>
+  <g id="number-96">
+    <circle class="badge-circle" cx="860" cy="860" r="42" />
+    <text class="badge-digit" x="860" y="862">96</text>
+  </g>
+  <g id="number-97">
+    <circle class="badge-circle" cx="960" cy="860" r="42" />
+    <text class="badge-digit" x="960" y="862">97</text>
+  </g>
+  <g id="number-98">
+    <circle class="badge-circle" cx="1060" cy="860" r="42" />
+    <text class="badge-digit" x="1060" y="862">98</text>
+  </g>
+  <g id="number-99">
+    <circle class="badge-circle" cx="60" cy="960" r="42" />
+    <text class="badge-digit" x="60" y="962">99</text>
+  </g>
+  <g id="number-100">
+    <circle class="badge-circle" cx="160" cy="960" r="42" />
+    <text class="badge-digit" x="160" y="962">100</text>
+  </g>
+</svg>
