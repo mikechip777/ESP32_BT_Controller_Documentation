@@ -4,11 +4,11 @@
 
 \section{Purpose of the System}
 
-The ESP32 Bluetooth RC Controller system is a modular embedded firmware platform designed to enable real-time remote control of an RC vehicle using bidirectional Bluetooth communication. The system is built around the ESP32 microcontroller and establishes a Serial Port Profile (SPP) Bluetooth link with an Android application, allowing both command transmission and telemetry feedback over a single wireless channel.
+The ESP32 Bluetooth RC Controller system is a modular embedded firmware platform designed to enable real-time remote control of an RC vehicle using bidirectional Bluetooth communication. The system is built around the ESP32 microcontroller and establishes a Serial Port Profile (SPP) Bluetooth link with the TeleCon4ESP32 Android application, allowing both command transmission and telemetry feedback over a single wireless channel.
 
 \subsection{What the System Does}
 
-The system receives control commands from an Android application via Bluetooth SPP and translates them into hardware actions such as:
+The system receives control commands from the TeleCon4ESP32 application via Bluetooth SPP and translates them into hardware actions such as:
 
 \begin{itemize}
 	\item Steering servo positioning
@@ -19,7 +19,7 @@ The system receives control commands from an Android application via Bluetooth S
 	\item Digital switch outputs
 \end{itemize}
 
-In addition to executing control commands, the firmware continuously gathers system and sensor data and transmits telemetry information back to the Android application. This telemetry may include panel values, indicators, plot data streams, input states, and sensor readings.
+In addition to executing control commands, the firmware continuously gathers system and sensor data and transmits telemetry information back to the TeleCon4ESP32 application. This telemetry may include panel values, indicators, plot data streams, input states, and sensor readings.
 
 The communication is fully bidirectional, enabling real-time control and monitoring within the same wireless link.
 
@@ -51,7 +51,7 @@ By using Bluetooth SPP as a communication layer, the system eliminates the need 
 
 \subsection{Bidirectional Bluetooth Communication}
 
-The firmware establishes a Serial Port Profile (SPP) Bluetooth connection, enabling structured packet-based communication between the ESP32 and the Android application. This approach allows:
+The firmware establishes a Serial Port Profile (SPP) Bluetooth connection, enabling structured packet-based communication between the ESP32 and the TeleCon4ESP32 application. This approach allows:
 
 \begin{itemize}
 	\item Deterministic command reception
@@ -66,7 +66,7 @@ The use of SPP provides sufficient bandwidth for control and telemetry while mai
 
 The system is designed around a continuous polling loop architecture that avoids blocking delays. Control packets are processed immediately upon reception, and hardware outputs are updated in deterministic order.
 
-Simultaneously, telemetry modules collect data from sensors, input states, and internal system variables and transmit them back to the Android application. This creates a closed-loop control and monitoring environment suitable for experimentation, diagnostics, and performance tuning.
+Simultaneously, telemetry modules collect data from sensors, input states, and internal system variables and transmit them back to the TeleCon4ESP32 application. This creates a closed-loop control and monitoring environment suitable for experimentation, diagnostics, and performance tuning.
 
 \subsection{Modular and Expandable Architecture}
 
@@ -125,7 +125,7 @@ For educational purposes, this deterministic structure allows students to clearl
 
 \subsection{Low-Latency Command Processing}
 
-A primary objective of the system is to minimize the delay between user input on the Android application and hardware response on the vehicle.
+A primary objective of the system is to minimize the delay between user input on the TeleCon4ESP32 application and hardware response on the vehicle.
 
 To achieve this:
 
@@ -238,11 +238,11 @@ The ESP32 Bluetooth RC Controller system is structured as a layered embedded arc
 
 At a high level, the system consists of six major functional layers that operate together to provide real-time remote control and telemetry feedback.
 
-\subsection{Android Application}
+\subsection{TeleCon4ESP32}
 
-The Android application acts as the human interface of the system. It generates control commands based on user interaction (such as joystick movement, button presses, or slider adjustments) and transmits them wirelessly to the ESP32.
+TeleCon4ESP32 acts as the human interface of the system. It generates control commands based on user interaction (such as joystick movement, button presses, or slider adjustments) and transmits them wirelessly to the ESP32.
 
-In addition to sending commands, the application receives telemetry data from the vehicle, allowing real-time monitoring of system variables, indicators, and sensor readings.
+In addition to sending commands, TeleCon4ESP32 receives telemetry data from the vehicle, allowing real-time monitoring of system variables, indicators, and sensor readings.
 
 \subsection{Bluetooth Communication Layer}
 
@@ -281,7 +281,7 @@ This layer contains the core decision-making logic that determines how received 
 
 \subsection{Telemetry Processing Layer}
 
-The Telemetry Processing Layer gathers system information and prepares it for transmission back to the Android application.
+The Telemetry Processing Layer gathers system information and prepares it for transmission back to the TeleCon4ESP32 application.
 
 Telemetry may include:
 
@@ -336,7 +336,7 @@ Figure~\ref{fig:system_block_diagram} illustrates the high-level architecture of
 		]
 		
 		% Nodes
-		\node[block] (android) {Android Application};
+		\node[block] (android) {TeleCon4ESP32};
 		\node[block, below=1.5cm of android] (bt) {Bluetooth Communication Layer};
 		\node[block, below=1.5cm of bt] (protocol) {Protocol Layer};
 		\node[block, below=1.5cm of protocol] (control) {Control Processing Layer};
@@ -383,20 +383,20 @@ The system operates through two primary functional flows that execute continuous
 	\item Uplink (Telemetry Path)
 \end{enumerate}
 
-These two paths form a bidirectional communication loop between the Android application and the physical hardware connected to the ESP32. The downlink path is responsible for real-time control, while the uplink path provides monitoring and feedback.
+These two paths form a bidirectional communication loop between the TeleCon4ESP32 application and the physical hardware connected to the ESP32. The downlink path is responsible for real-time control, while the uplink path provides monitoring and feedback.
 
 \subsection{Downlink: Control Path}
 
-The downlink path begins at the Android application, where user interactions such as joystick movements, button presses, and slider adjustments generate control data.
+The downlink path begins at the TeleCon4ESP32 application, where user interactions such as joystick movements, button presses, and slider adjustments generate control data.
 
 The functional flow can be summarized as:
 
 \begin{center}
-	Android Application $\rightarrow$ Bluetooth $\rightarrow$ Receiver $\rightarrow$ Control $\rightarrow$ Hardware
+	TeleCon4ESP32 $\rightarrow$ Bluetooth $\rightarrow$ Receiver $\rightarrow$ Control $\rightarrow$ Hardware
 \end{center}
 
-\textbf{1. Android Application} \\
-The application encodes user input into structured control packets and transmits them over the Bluetooth Serial Port Profile (SPP).
+\textbf{1. TeleCon4ESP32} \\
+TeleCon4ESP32 encodes user input into structured control packets and transmits them over the Bluetooth Serial Port Profile (SPP).
 
 \textbf{2. Bluetooth Communication} \\
 The ESP32 receives the incoming byte stream through its Bluetooth interface. The data is passed to the internal communication system for processing.
@@ -429,7 +429,7 @@ While control commands flow from the Android device to the vehicle, telemetry da
 The functional flow can be summarized as:
 
 \begin{center}
-	Hardware $\rightarrow$ Telemetry Source $\rightarrow$ Telemetry Module $\rightarrow$ Bluetooth $\rightarrow$ Android Application
+	Hardware $\rightarrow$ Telemetry Source $\rightarrow$ Telemetry Module $\rightarrow$ Bluetooth $\rightarrow$ TeleCon4ESP32
 \end{center}
 
 \textbf{1. Physical Hardware} \\
@@ -453,8 +453,8 @@ These packets are constructed according to the defined protocol format and prepa
 \textbf{4. Bluetooth Communication} \\
 Formatted telemetry packets are transmitted over the same Bluetooth SPP connection used for control commands.
 
-\textbf{5. Android Application} \\
-The Android application receives and decodes telemetry packets, updating graphical elements such as indicators, charts, and data panels in real time.
+\textbf{5. TeleCon4ESP32} \\
+TeleCon4ESP32 receives and decodes telemetry packets, updating graphical elements such as indicators, charts, and data panels in real time.
 
 \subsection{Bidirectional Operation}
 
@@ -613,13 +613,13 @@ The major functional domains include:
 	
 	\item \textbf{Receiver} — Processes incoming byte streams, performs packet synchronization, validates checksums, and extracts structured control data.
 	
-	\item \textbf{Packet Definitions} — Defines structured data formats for control and telemetry communication, ensuring consistent interpretation between the ESP32 and the Android application.
+	\item \textbf{Packet Definitions} — Defines structured data formats for control and telemetry communication, ensuring consistent interpretation between the ESP32 and the TeleCon4ESP32 application.
 	
 	\item \textbf{Control Processing} — Translates validated control data into logical commands that affect motors, servos, and digital outputs.
 	
 	\item \textbf{Input Handling} — Manages physical or logical input states and integrates them into telemetry or control logic.
 	
-	\item \textbf{Telemetry System} — Collects system data, formats telemetry packets, and transmits structured feedback to the Android application.
+	\item \textbf{Telemetry System} — Collects system data, formats telemetry packets, and transmits structured feedback to the TeleCon4ESP32 application.
 	
 	\item \textbf{I\textsuperscript{2}C Communication} — Manages external sensors and peripheral devices connected via the I\textsuperscript{2}C bus.
 	
@@ -733,7 +733,7 @@ These capabilities enable users to monitor environmental data, extend digital in
 
 \subsection{Telemetry and Monitoring Features}
 
-The system provides structured telemetry functionality to enable real-time monitoring from the Android application. Supported telemetry features include:
+The system provides structured telemetry functionality to enable real-time monitoring from the TeleCon4ESP32 application. Supported telemetry features include:
 
 \begin{itemize}
 	\item \textbf{Configurable Telemetry Panels} — Display of structured numerical or textual data values.
@@ -742,7 +742,7 @@ The system provides structured telemetry functionality to enable real-time monit
 	
 	\item \textbf{Indicator Telemetry} — Real-time status indicators for binary or state-based information.
 	
-	\item \textbf{Input Telemetry Reporting} — Feedback of input states and system variables to the Android interface.
+	\item \textbf{Input Telemetry Reporting} — Feedback of input states and system variables to the TeleCon4ESP32 interface.
 \end{itemize}
 
 These telemetry features create a closed-loop control and monitoring environment, allowing users to observe system behavior while actively controlling the vehicle.

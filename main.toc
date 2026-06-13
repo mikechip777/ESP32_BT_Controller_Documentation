@@ -1,209 +1,209 @@
 \babel@toc {spanish}{}\relax 
-\contentsline {chapter}{\numberline {1}System Overview}{5}{chapter.1}%
-\contentsline {section}{\numberline {1.1}Purpose of the System}{5}{section.1.1}%
-\contentsline {subsection}{\numberline {1.1.1}What the System Does}{5}{subsection.1.1.1}%
-\contentsline {subsection}{\numberline {1.1.2}Who Uses the System}{5}{subsection.1.1.2}%
-\contentsline {subsection}{\numberline {1.1.3}What Problem the System Solves}{6}{subsection.1.1.3}%
-\contentsline {subsection}{\numberline {1.1.4}Bidirectional Bluetooth Communication}{6}{subsection.1.1.4}%
-\contentsline {subsection}{\numberline {1.1.5}Real-Time Control and Telemetry Feedback}{6}{subsection.1.1.5}%
-\contentsline {subsection}{\numberline {1.1.6}Modular and Expandable Architecture}{7}{subsection.1.1.6}%
-\contentsline {section}{\numberline {1.2}System Objectives}{7}{section.1.2}%
-\contentsline {subsection}{\numberline {1.2.1}Deterministic Control Loop}{7}{subsection.1.2.1}%
-\contentsline {subsection}{\numberline {1.2.2}Low-Latency Command Processing}{8}{subsection.1.2.2}%
-\contentsline {subsection}{\numberline {1.2.3}Robust Packet Synchronization}{8}{subsection.1.2.3}%
-\contentsline {subsection}{\numberline {1.2.4}Modular Firmware Structure}{8}{subsection.1.2.4}%
-\contentsline {subsection}{\numberline {1.2.5}Hardware Abstraction}{9}{subsection.1.2.5}%
-\contentsline {subsection}{\numberline {1.2.6}Expandability and Experimentation}{9}{subsection.1.2.6}%
-\contentsline {section}{\numberline {1.3}High-Level System Description}{10}{section.1.3}%
-\contentsline {subsection}{\numberline {1.3.1}Android Application}{10}{subsection.1.3.1}%
-\contentsline {subsection}{\numberline {1.3.2}Bluetooth Communication Layer}{10}{subsection.1.3.2}%
-\contentsline {subsection}{\numberline {1.3.3}Protocol Layer}{10}{subsection.1.3.3}%
-\contentsline {subsection}{\numberline {1.3.4}Control Processing Layer}{10}{subsection.1.3.4}%
-\contentsline {subsection}{\numberline {1.3.5}Telemetry Processing Layer}{11}{subsection.1.3.5}%
-\contentsline {subsection}{\numberline {1.3.6}Hardware Abstraction Layer}{11}{subsection.1.3.6}%
-\contentsline {subsection}{\numberline {1.3.7}Physical Hardware}{11}{subsection.1.3.7}%
-\contentsline {subsection}{\numberline {1.3.8}System Block Diagram}{12}{subsection.1.3.8}%
-\contentsline {section}{\numberline {1.4}Functional Architecture}{12}{section.1.4}%
-\contentsline {subsection}{\numberline {1.4.1}Downlink: Control Path}{13}{subsection.1.4.1}%
-\contentsline {subsection}{\numberline {1.4.2}Uplink: Telemetry Path}{13}{subsection.1.4.2}%
-\contentsline {subsection}{\numberline {1.4.3}Bidirectional Operation}{14}{subsection.1.4.3}%
-\contentsline {section}{\numberline {1.5}Real-Time Characteristics}{15}{section.1.5}%
-\contentsline {subsection}{\numberline {1.5.1}Polling-Based Architecture}{15}{subsection.1.5.1}%
-\contentsline {subsection}{\numberline {1.5.2}Non-Blocking Loop Design}{15}{subsection.1.5.2}%
-\contentsline {subsection}{\numberline {1.5.3}Avoidance of \texttt {delay()} Usage}{15}{subsection.1.5.3}%
-\contentsline {subsection}{\numberline {1.5.4}Deterministic Execution Order}{16}{subsection.1.5.4}%
-\contentsline {subsection}{\numberline {1.5.5}Fixed-Size Packet Model for Control}{16}{subsection.1.5.5}%
-\contentsline {subsection}{\numberline {1.5.6}Preparation for Timing Analysis}{16}{subsection.1.5.6}%
-\contentsline {section}{\numberline {1.6}Modular Firmware Philosophy}{17}{section.1.6}%
-\contentsline {subsection}{\numberline {1.6.1}Separation of Responsibilities}{17}{subsection.1.6.1}%
-\contentsline {subsection}{\numberline {1.6.2}Hardware Abstraction Separation}{17}{subsection.1.6.2}%
-\contentsline {subsection}{\numberline {1.6.3}Educational and Practical Benefits}{18}{subsection.1.6.3}%
-\contentsline {subsection}{\numberline {1.6.4}Scalability and Future Extension}{18}{subsection.1.6.4}%
-\contentsline {section}{\numberline {1.7}System Capabilities}{18}{section.1.7}%
-\contentsline {subsection}{\numberline {1.7.1}Motion Control}{19}{subsection.1.7.1}%
-\contentsline {subsection}{\numberline {1.7.2}Digital Output Control}{19}{subsection.1.7.2}%
-\contentsline {subsection}{\numberline {1.7.3}Sensor Integration}{19}{subsection.1.7.3}%
-\contentsline {subsection}{\numberline {1.7.4}Telemetry and Monitoring Features}{19}{subsection.1.7.4}%
-\contentsline {subsection}{\numberline {1.7.5}Platform Flexibility}{20}{subsection.1.7.5}%
-\contentsline {section}{\numberline {1.8}System Constraints}{20}{section.1.8}%
-\contentsline {subsection}{\numberline {1.8.1}Bluetooth Bandwidth and Latency}{20}{subsection.1.8.1}%
-\contentsline {subsection}{\numberline {1.8.2}Microcontroller Resource Limits}{20}{subsection.1.8.2}%
-\contentsline {subsection}{\numberline {1.8.3}Fixed Buffer Sizes}{21}{subsection.1.8.3}%
-\contentsline {subsection}{\numberline {1.8.4}Checksum Simplicity}{21}{subsection.1.8.4}%
-\contentsline {subsection}{\numberline {1.8.5}Single-Loop Execution Model}{21}{subsection.1.8.5}%
-\contentsline {subsection}{\numberline {1.8.6}Hardware Dependency}{21}{subsection.1.8.6}%
-\contentsline {subsection}{\numberline {1.8.7}Educational Scope}{22}{subsection.1.8.7}%
-\contentsline {section}{\numberline {1.9}Document Structure}{22}{section.1.9}%
-\contentsline {chapter}{\numberline {2}Firmware Architecture}{24}{chapter.2}%
-\contentsline {section}{\numberline {2.1}Architectural Objectives}{24}{section.2.1}%
-\contentsline {section}{\numberline {2.2}Architectural Decomposition Model}{24}{section.2.2}%
-\contentsline {subsection}{\numberline {2.2.1}Logical Layers}{24}{subsection.2.2.1}%
-\contentsline {section}{\numberline {2.3}Module-Level Decomposition}{25}{section.2.3}%
-\contentsline {section}{\numberline {2.4}Execution Model}{25}{section.2.4}%
-\contentsline {subsection}{\numberline {2.4.1}Deterministic Ordering}{26}{subsection.2.4.1}%
-\contentsline {subsection}{\numberline {2.4.2}Polling Strategy}{26}{subsection.2.4.2}%
-\contentsline {subsection}{\numberline {2.4.3}Non-Blocking Constraint}{26}{subsection.2.4.3}%
-\contentsline {section}{\numberline {2.5}Data Ownership and State Management}{26}{section.2.5}%
-\contentsline {subsection}{\numberline {2.5.1}State Variables}{26}{subsection.2.5.1}%
-\contentsline {subsection}{\numberline {2.5.2}State Update Discipline}{26}{subsection.2.5.2}%
-\contentsline {section}{\numberline {2.6}Data Flow Structure}{26}{section.2.6}%
-\contentsline {subsection}{\numberline {2.6.1}Command Processing Path}{26}{subsection.2.6.1}%
-\contentsline {subsection}{\numberline {2.6.2}Telemetry Processing Path}{27}{subsection.2.6.2}%
-\contentsline {section}{\numberline {2.7}Interface Boundaries}{27}{section.2.7}%
-\contentsline {section}{\numberline {2.8}Hardware Abstraction Strategy}{27}{section.2.8}%
-\contentsline {section}{\numberline {2.9}Scalability and Controlled Expansion}{27}{section.2.9}%
-\contentsline {subsection}{\numberline {2.9.1}Sensor Integration}{27}{subsection.2.9.1}%
-\contentsline {subsection}{\numberline {2.9.2}Actuator Integration}{28}{subsection.2.9.2}%
-\contentsline {subsection}{\numberline {2.9.3}I/O Expansion}{28}{subsection.2.9.3}%
-\contentsline {subsection}{\numberline {2.9.4}Structural Stability}{28}{subsection.2.9.4}%
-\contentsline {chapter}{\numberline {3}Communication Protocol Specification}{29}{chapter.3}%
-\contentsline {section}{\numberline {3.1}Protocol Overview}{29}{section.3.1}%
-\contentsline {section}{\numberline {3.2}Communication Model}{29}{section.3.2}%
-\contentsline {section}{\numberline {3.3}Packet Framing Strategy}{29}{section.3.3}%
-\contentsline {subsection}{\numberline {3.3.1}General Packet Structure}{30}{subsection.3.3.1}%
-\contentsline {subsection}{\numberline {3.3.2}Start-of-Frame Marker}{30}{subsection.3.3.2}%
-\contentsline {section}{\numberline {3.4}Control Packet Format}{30}{section.3.4}%
-\contentsline {subsection}{\numberline {3.4.1}Control Packet Structure}{30}{subsection.3.4.1}%
-\contentsline {subsection}{\numberline {3.4.2}Control Fields}{30}{subsection.3.4.2}%
-\contentsline {section}{\numberline {3.5}Telemetry Packet Format}{31}{section.3.5}%
-\contentsline {subsection}{\numberline {3.5.1}Telemetry Packet Structure}{31}{subsection.3.5.1}%
-\contentsline {subsection}{\numberline {3.5.2}Telemetry Fields}{31}{subsection.3.5.2}%
-\contentsline {section}{\numberline {3.6}Checksum and Error Detection}{31}{section.3.6}%
-\contentsline {subsection}{\numberline {3.6.1}Checksum Purpose}{31}{subsection.3.6.1}%
-\contentsline {subsection}{\numberline {3.6.2}Checksum Model}{31}{subsection.3.6.2}%
-\contentsline {section}{\numberline {3.7}Parser Synchronization Model}{32}{section.3.7}%
-\contentsline {section}{\numberline {3.8}Timing Characteristics}{32}{section.3.8}%
-\contentsline {section}{\numberline {3.9}Protocol Determinism}{32}{section.3.9}%
-\contentsline {section}{\numberline {3.10}Extensibility Strategy}{32}{section.3.10}%
-\contentsline {section}{\numberline {3.11}Protocol Robustness Considerations}{33}{section.3.11}%
-\contentsline {section}{\numberline {3.12}Summary}{33}{section.3.12}%
-\contentsline {chapter}{\numberline {4}Firmware Structure}{34}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Introduction}{34}{section.4.1}%
-\contentsline {section}{\numberline {4.2}Source Code Organization Strategy}{34}{section.4.2}%
-\contentsline {section}{\numberline {4.3}Main Entry Point Structure}{34}{section.4.3}%
-\contentsline {subsection}{\numberline {4.3.1}Initialization Phase}{35}{subsection.4.3.1}%
-\contentsline {subsection}{\numberline {4.3.2}Main Control Loop}{35}{subsection.4.3.2}%
-\contentsline {section}{\numberline {4.4}Module Categories}{35}{section.4.4}%
-\contentsline {subsection}{\numberline {4.4.1}Communication Module}{35}{subsection.4.4.1}%
-\contentsline {subsection}{\numberline {4.4.2}Control and Input Module}{36}{subsection.4.4.2}%
-\contentsline {subsection}{\numberline {4.4.3}Motor Control Module}{36}{subsection.4.4.3}%
-\contentsline {subsection}{\numberline {4.4.4}Servo Control Module}{36}{subsection.4.4.4}%
-\contentsline {subsection}{\numberline {4.4.5}Telemetry Module}{36}{subsection.4.4.5}%
-\contentsline {subsection}{\numberline {4.4.6}Sensor Interface Modules}{36}{subsection.4.4.6}%
-\contentsline {subsection}{\numberline {4.4.7}GPIO Expansion Driver}{37}{subsection.4.4.7}%
-\contentsline {subsection}{\numberline {4.4.8}Output Management Module}{37}{subsection.4.4.8}%
-\contentsline {section}{\numberline {4.5}Inter-Module Communication Model}{37}{section.4.5}%
-\contentsline {section}{\numberline {4.6}Header File Discipline}{37}{section.4.6}%
-\contentsline {section}{\numberline {4.7}Configuration and Pin Isolation}{38}{section.4.7}%
-\contentsline {section}{\numberline {4.8}Error Handling Strategy}{38}{section.4.8}%
-\contentsline {section}{\numberline {4.9}Resource Management Considerations}{38}{section.4.9}%
-\contentsline {section}{\numberline {4.10}Implementation Consistency with Architecture}{38}{section.4.10}%
-\contentsline {section}{\numberline {4.11}Summary}{39}{section.4.11}%
-\contentsline {chapter}{\numberline {5}Timing and Real-Time Analysis}{40}{chapter.5}%
-\contentsline {section}{\numberline {5.1}Introduction}{40}{section.5.1}%
-\contentsline {section}{\numberline {5.2}Execution Model Overview}{40}{section.5.2}%
-\contentsline {section}{\numberline {5.3}Control Loop Structure}{40}{section.5.3}%
-\contentsline {section}{\numberline {5.4}Worst-Case Execution Time (WCET)}{41}{section.5.4}%
-\contentsline {subsection}{\numberline {5.4.1}Qualitative Estimation}{41}{subsection.5.4.1}%
-\contentsline {section}{\numberline {5.5}Loop Frequency Estimation}{41}{section.5.5}%
-\contentsline {section}{\numberline {5.6}Communication Latency}{42}{section.5.6}%
-\contentsline {section}{\numberline {5.7}Actuator Update Timing}{42}{section.5.7}%
-\contentsline {section}{\numberline {5.8}Sensor Sampling Rate}{42}{section.5.8}%
-\contentsline {section}{\numberline {5.9}Determinism Analysis}{43}{section.5.9}%
-\contentsline {section}{\numberline {5.10}Jitter Considerations}{43}{section.5.10}%
-\contentsline {section}{\numberline {5.11}Real-Time Classification}{43}{section.5.11}%
-\contentsline {section}{\numberline {5.12}Communication Loss Handling}{44}{section.5.12}%
-\contentsline {section}{\numberline {5.13}Scalability Impact on Timing}{44}{section.5.13}%
-\contentsline {section}{\numberline {5.14}Summary}{44}{section.5.14}%
-\contentsline {chapter}{\numberline {6}Hardware Architecture and Implementation}{45}{chapter.6}%
-\contentsline {section}{\numberline {6.1}Introduction}{45}{section.6.1}%
-\contentsline {section}{\numberline {6.2}System Overview}{45}{section.6.2}%
-\contentsline {section}{\numberline {6.3}Microcontroller Unit}{46}{section.6.3}%
-\contentsline {section}{\numberline {6.4}Motor Driver Stage}{46}{section.6.4}%
-\contentsline {section}{\numberline {6.5}Servo Control Interface}{46}{section.6.5}%
-\contentsline {section}{\numberline {6.6}Sensor Subsystem}{47}{section.6.6}%
-\contentsline {section}{\numberline {6.7}GPIO Expansion Module}{47}{section.6.7}%
-\contentsline {section}{\numberline {6.8}Power Distribution Architecture}{47}{section.6.8}%
-\contentsline {section}{\numberline {6.9}Signal Integrity Considerations}{47}{section.6.9}%
-\contentsline {section}{\numberline {6.10}Fail-Safe and Protection Mechanisms}{48}{section.6.10}%
-\contentsline {section}{\numberline {6.11}Hardware–Firmware Consistency}{48}{section.6.11}%
-\contentsline {section}{\numberline {6.12}Scalability and Expansion Potential}{48}{section.6.12}%
-\contentsline {section}{\numberline {6.13}Summary}{48}{section.6.13}%
-\contentsline {chapter}{\numberline {7}Performance Evaluation}{50}{chapter.7}%
-\contentsline {section}{\numberline {7.1}Introduction}{50}{section.7.1}%
-\contentsline {section}{\numberline {7.2}Experimental Setup}{50}{section.7.2}%
-\contentsline {section}{\numberline {7.3}Control Loop Frequency Measurement}{51}{section.7.3}%
-\contentsline {subsection}{\numberline {7.3.1}Observed Results}{51}{subsection.7.3.1}%
-\contentsline {section}{\numberline {7.4}End-to-End Command Latency}{51}{section.7.4}%
-\contentsline {subsection}{\numberline {7.4.1}Observed Behavior}{51}{subsection.7.4.1}%
-\contentsline {section}{\numberline {7.5}Actuator Response Stability}{52}{section.7.5}%
-\contentsline {section}{\numberline {7.6}Wireless Communication Stability}{52}{section.7.6}%
-\contentsline {section}{\numberline {7.7}Telemetry Throughput}{52}{section.7.7}%
-\contentsline {section}{\numberline {7.8}Memory Utilization}{52}{section.7.8}%
-\contentsline {section}{\numberline {7.9}CPU Utilization Estimation}{53}{section.7.9}%
-\contentsline {section}{\numberline {7.10}Stress Testing}{53}{section.7.10}%
-\contentsline {section}{\numberline {7.11}Performance Limitations}{53}{section.7.11}%
-\contentsline {section}{\numberline {7.12}Summary}{54}{section.7.12}%
-\contentsline {chapter}{\numberline {8}Design Decisions and Trade-Off Analysis}{55}{chapter.8}%
-\contentsline {section}{\numberline {8.1}Introduction}{55}{section.8.1}%
-\contentsline {section}{\numberline {8.2}Microcontroller Selection}{55}{section.8.2}%
-\contentsline {subsection}{\numberline {8.2.1}Advantages}{55}{subsection.8.2.1}%
-\contentsline {subsection}{\numberline {8.2.2}Trade-Offs}{56}{subsection.8.2.2}%
-\contentsline {section}{\numberline {8.3}Custom Communication Protocol}{56}{section.8.3}%
-\contentsline {subsection}{\numberline {8.3.1}Advantages}{56}{subsection.8.3.1}%
-\contentsline {subsection}{\numberline {8.3.2}Trade-Offs}{56}{subsection.8.3.2}%
-\contentsline {section}{\numberline {8.4}Modular Firmware Architecture}{56}{section.8.4}%
-\contentsline {subsection}{\numberline {8.4.1}Advantages}{56}{subsection.8.4.1}%
-\contentsline {subsection}{\numberline {8.4.2}Trade-Offs}{57}{subsection.8.4.2}%
-\contentsline {section}{\numberline {8.5}Hardware Abstraction Layer}{57}{section.8.5}%
-\contentsline {subsection}{\numberline {8.5.1}Advantages}{57}{subsection.8.5.1}%
-\contentsline {subsection}{\numberline {8.5.2}Trade-Offs}{57}{subsection.8.5.2}%
-\contentsline {section}{\numberline {8.6}Single-Threaded Execution Model}{57}{section.8.6}%
-\contentsline {subsection}{\numberline {8.6.1}Advantages}{57}{subsection.8.6.1}%
-\contentsline {subsection}{\numberline {8.6.2}Trade-Offs}{57}{subsection.8.6.2}%
-\contentsline {section}{\numberline {8.7}I2C-Based GPIO Expansion}{58}{section.8.7}%
-\contentsline {subsection}{\numberline {8.7.1}Advantages}{58}{subsection.8.7.1}%
-\contentsline {subsection}{\numberline {8.7.2}Trade-Offs}{58}{subsection.8.7.2}%
-\contentsline {section}{\numberline {8.8}Static Memory Allocation Strategy}{58}{section.8.8}%
-\contentsline {subsection}{\numberline {8.8.1}Advantages}{58}{subsection.8.8.1}%
-\contentsline {subsection}{\numberline {8.8.2}Trade-Offs}{58}{subsection.8.8.2}%
-\contentsline {section}{\numberline {8.9}Binary Packet Structure}{58}{section.8.9}%
-\contentsline {subsection}{\numberline {8.9.1}Advantages}{58}{subsection.8.9.1}%
-\contentsline {subsection}{\numberline {8.9.2}Trade-Offs}{59}{subsection.8.9.2}%
-\contentsline {section}{\numberline {8.10}System Scalability Philosophy}{59}{section.8.10}%
-\contentsline {section}{\numberline {8.11}Overall Architectural Philosophy}{59}{section.8.11}%
-\contentsline {section}{\numberline {8.12}Summary}{59}{section.8.12}%
-\contentsline {chapter}{\numberline {9}Future Work}{60}{chapter.9}%
-\contentsline {section}{\numberline {9.1}Introduction}{60}{section.9.1}%
-\contentsline {section}{\numberline {9.2}Closed-Loop Control Implementation}{60}{section.9.2}%
-\contentsline {section}{\numberline {9.3}Migration to Real-Time Operating System}{60}{section.9.3}%
-\contentsline {section}{\numberline {9.4}Advanced Communication Protocol}{61}{section.9.4}%
-\contentsline {section}{\numberline {9.5}Wi-Fi and Internet Connectivity}{61}{section.9.5}%
-\contentsline {section}{\numberline {9.6}Energy Optimization}{61}{section.9.6}%
-\contentsline {section}{\numberline {9.7}Autonomous Operation Capabilities}{62}{section.9.7}%
-\contentsline {section}{\numberline {9.8}Improved Telemetry and Data Analytics}{62}{section.9.8}%
-\contentsline {section}{\numberline {9.9}Custom PCB Design}{62}{section.9.9}%
-\contentsline {section}{\numberline {9.10}Mechanical System Integration}{62}{section.9.10}%
-\contentsline {section}{\numberline {9.11}Scalability to Multi-Vehicle Systems}{63}{section.9.11}%
-\contentsline {section}{\numberline {9.12}Artificial Intelligence Integration}{63}{section.9.12}%
-\contentsline {section}{\numberline {9.13}Summary}{63}{section.9.13}%
+\contentsline {chapter}{\numberline {1}System Overview}{6}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Purpose of the System}{6}{section.1.1}%
+\contentsline {subsection}{\numberline {1.1.1}What the System Does}{6}{subsection.1.1.1}%
+\contentsline {subsection}{\numberline {1.1.2}Who Uses the System}{6}{subsection.1.1.2}%
+\contentsline {subsection}{\numberline {1.1.3}What Problem the System Solves}{7}{subsection.1.1.3}%
+\contentsline {subsection}{\numberline {1.1.4}Bidirectional Bluetooth Communication}{7}{subsection.1.1.4}%
+\contentsline {subsection}{\numberline {1.1.5}Real-Time Control and Telemetry Feedback}{7}{subsection.1.1.5}%
+\contentsline {subsection}{\numberline {1.1.6}Modular and Expandable Architecture}{8}{subsection.1.1.6}%
+\contentsline {section}{\numberline {1.2}System Objectives}{8}{section.1.2}%
+\contentsline {subsection}{\numberline {1.2.1}Deterministic Control Loop}{8}{subsection.1.2.1}%
+\contentsline {subsection}{\numberline {1.2.2}Low-Latency Command Processing}{9}{subsection.1.2.2}%
+\contentsline {subsection}{\numberline {1.2.3}Robust Packet Synchronization}{9}{subsection.1.2.3}%
+\contentsline {subsection}{\numberline {1.2.4}Modular Firmware Structure}{9}{subsection.1.2.4}%
+\contentsline {subsection}{\numberline {1.2.5}Hardware Abstraction}{10}{subsection.1.2.5}%
+\contentsline {subsection}{\numberline {1.2.6}Expandability and Experimentation}{10}{subsection.1.2.6}%
+\contentsline {section}{\numberline {1.3}High-Level System Description}{11}{section.1.3}%
+\contentsline {subsection}{\numberline {1.3.1}TeleCon4ESP32}{11}{subsection.1.3.1}%
+\contentsline {subsection}{\numberline {1.3.2}Bluetooth Communication Layer}{11}{subsection.1.3.2}%
+\contentsline {subsection}{\numberline {1.3.3}Protocol Layer}{11}{subsection.1.3.3}%
+\contentsline {subsection}{\numberline {1.3.4}Control Processing Layer}{11}{subsection.1.3.4}%
+\contentsline {subsection}{\numberline {1.3.5}Telemetry Processing Layer}{12}{subsection.1.3.5}%
+\contentsline {subsection}{\numberline {1.3.6}Hardware Abstraction Layer}{12}{subsection.1.3.6}%
+\contentsline {subsection}{\numberline {1.3.7}Physical Hardware}{12}{subsection.1.3.7}%
+\contentsline {subsection}{\numberline {1.3.8}System Block Diagram}{13}{subsection.1.3.8}%
+\contentsline {section}{\numberline {1.4}Functional Architecture}{13}{section.1.4}%
+\contentsline {subsection}{\numberline {1.4.1}Downlink: Control Path}{14}{subsection.1.4.1}%
+\contentsline {subsection}{\numberline {1.4.2}Uplink: Telemetry Path}{14}{subsection.1.4.2}%
+\contentsline {subsection}{\numberline {1.4.3}Bidirectional Operation}{15}{subsection.1.4.3}%
+\contentsline {section}{\numberline {1.5}Real-Time Characteristics}{16}{section.1.5}%
+\contentsline {subsection}{\numberline {1.5.1}Polling-Based Architecture}{16}{subsection.1.5.1}%
+\contentsline {subsection}{\numberline {1.5.2}Non-Blocking Loop Design}{16}{subsection.1.5.2}%
+\contentsline {subsection}{\numberline {1.5.3}Avoidance of \texttt {delay()} Usage}{16}{subsection.1.5.3}%
+\contentsline {subsection}{\numberline {1.5.4}Deterministic Execution Order}{17}{subsection.1.5.4}%
+\contentsline {subsection}{\numberline {1.5.5}Fixed-Size Packet Model for Control}{17}{subsection.1.5.5}%
+\contentsline {subsection}{\numberline {1.5.6}Preparation for Timing Analysis}{17}{subsection.1.5.6}%
+\contentsline {section}{\numberline {1.6}Modular Firmware Philosophy}{18}{section.1.6}%
+\contentsline {subsection}{\numberline {1.6.1}Separation of Responsibilities}{18}{subsection.1.6.1}%
+\contentsline {subsection}{\numberline {1.6.2}Hardware Abstraction Separation}{18}{subsection.1.6.2}%
+\contentsline {subsection}{\numberline {1.6.3}Educational and Practical Benefits}{19}{subsection.1.6.3}%
+\contentsline {subsection}{\numberline {1.6.4}Scalability and Future Extension}{19}{subsection.1.6.4}%
+\contentsline {section}{\numberline {1.7}System Capabilities}{19}{section.1.7}%
+\contentsline {subsection}{\numberline {1.7.1}Motion Control}{20}{subsection.1.7.1}%
+\contentsline {subsection}{\numberline {1.7.2}Digital Output Control}{20}{subsection.1.7.2}%
+\contentsline {subsection}{\numberline {1.7.3}Sensor Integration}{20}{subsection.1.7.3}%
+\contentsline {subsection}{\numberline {1.7.4}Telemetry and Monitoring Features}{20}{subsection.1.7.4}%
+\contentsline {subsection}{\numberline {1.7.5}Platform Flexibility}{21}{subsection.1.7.5}%
+\contentsline {section}{\numberline {1.8}System Constraints}{21}{section.1.8}%
+\contentsline {subsection}{\numberline {1.8.1}Bluetooth Bandwidth and Latency}{21}{subsection.1.8.1}%
+\contentsline {subsection}{\numberline {1.8.2}Microcontroller Resource Limits}{21}{subsection.1.8.2}%
+\contentsline {subsection}{\numberline {1.8.3}Fixed Buffer Sizes}{22}{subsection.1.8.3}%
+\contentsline {subsection}{\numberline {1.8.4}Checksum Simplicity}{22}{subsection.1.8.4}%
+\contentsline {subsection}{\numberline {1.8.5}Single-Loop Execution Model}{22}{subsection.1.8.5}%
+\contentsline {subsection}{\numberline {1.8.6}Hardware Dependency}{22}{subsection.1.8.6}%
+\contentsline {subsection}{\numberline {1.8.7}Educational Scope}{23}{subsection.1.8.7}%
+\contentsline {section}{\numberline {1.9}Document Structure}{23}{section.1.9}%
+\contentsline {chapter}{\numberline {2}Firmware Architecture}{25}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Architectural Objectives}{25}{section.2.1}%
+\contentsline {section}{\numberline {2.2}Architectural Decomposition Model}{25}{section.2.2}%
+\contentsline {subsection}{\numberline {2.2.1}Logical Layers}{25}{subsection.2.2.1}%
+\contentsline {section}{\numberline {2.3}Module-Level Decomposition}{26}{section.2.3}%
+\contentsline {section}{\numberline {2.4}Execution Model}{26}{section.2.4}%
+\contentsline {subsection}{\numberline {2.4.1}Deterministic Ordering}{27}{subsection.2.4.1}%
+\contentsline {subsection}{\numberline {2.4.2}Polling Strategy}{27}{subsection.2.4.2}%
+\contentsline {subsection}{\numberline {2.4.3}Non-Blocking Constraint}{27}{subsection.2.4.3}%
+\contentsline {section}{\numberline {2.5}Data Ownership and State Management}{27}{section.2.5}%
+\contentsline {subsection}{\numberline {2.5.1}State Variables}{27}{subsection.2.5.1}%
+\contentsline {subsection}{\numberline {2.5.2}State Update Discipline}{27}{subsection.2.5.2}%
+\contentsline {section}{\numberline {2.6}Data Flow Structure}{27}{section.2.6}%
+\contentsline {subsection}{\numberline {2.6.1}Command Processing Path}{27}{subsection.2.6.1}%
+\contentsline {subsection}{\numberline {2.6.2}Telemetry Processing Path}{28}{subsection.2.6.2}%
+\contentsline {section}{\numberline {2.7}Interface Boundaries}{28}{section.2.7}%
+\contentsline {section}{\numberline {2.8}Hardware Abstraction Strategy}{28}{section.2.8}%
+\contentsline {section}{\numberline {2.9}Scalability and Controlled Expansion}{28}{section.2.9}%
+\contentsline {subsection}{\numberline {2.9.1}Sensor Integration}{28}{subsection.2.9.1}%
+\contentsline {subsection}{\numberline {2.9.2}Actuator Integration}{29}{subsection.2.9.2}%
+\contentsline {subsection}{\numberline {2.9.3}I/O Expansion}{29}{subsection.2.9.3}%
+\contentsline {subsection}{\numberline {2.9.4}Structural Stability}{29}{subsection.2.9.4}%
+\contentsline {chapter}{\numberline {3}Communication Protocol Specification}{30}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Protocol Overview}{30}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Communication Model}{30}{section.3.2}%
+\contentsline {section}{\numberline {3.3}Packet Framing Strategy}{30}{section.3.3}%
+\contentsline {subsection}{\numberline {3.3.1}General Packet Structure}{31}{subsection.3.3.1}%
+\contentsline {subsection}{\numberline {3.3.2}Start-of-Frame Marker}{31}{subsection.3.3.2}%
+\contentsline {section}{\numberline {3.4}Control Packet Format}{31}{section.3.4}%
+\contentsline {subsection}{\numberline {3.4.1}Control Packet Structure}{31}{subsection.3.4.1}%
+\contentsline {subsection}{\numberline {3.4.2}Control Fields}{31}{subsection.3.4.2}%
+\contentsline {section}{\numberline {3.5}Telemetry Packet Format}{32}{section.3.5}%
+\contentsline {subsection}{\numberline {3.5.1}Telemetry Packet Structure}{32}{subsection.3.5.1}%
+\contentsline {subsection}{\numberline {3.5.2}Telemetry Fields}{32}{subsection.3.5.2}%
+\contentsline {section}{\numberline {3.6}Checksum and Error Detection}{32}{section.3.6}%
+\contentsline {subsection}{\numberline {3.6.1}Checksum Purpose}{32}{subsection.3.6.1}%
+\contentsline {subsection}{\numberline {3.6.2}Checksum Model}{32}{subsection.3.6.2}%
+\contentsline {section}{\numberline {3.7}Parser Synchronization Model}{33}{section.3.7}%
+\contentsline {section}{\numberline {3.8}Timing Characteristics}{33}{section.3.8}%
+\contentsline {section}{\numberline {3.9}Protocol Determinism}{33}{section.3.9}%
+\contentsline {section}{\numberline {3.10}Extensibility Strategy}{33}{section.3.10}%
+\contentsline {section}{\numberline {3.11}Protocol Robustness Considerations}{34}{section.3.11}%
+\contentsline {section}{\numberline {3.12}Summary}{34}{section.3.12}%
+\contentsline {chapter}{\numberline {4}Firmware Structure}{35}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Introduction}{35}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Source Code Organization Strategy}{35}{section.4.2}%
+\contentsline {section}{\numberline {4.3}Main Entry Point Structure}{35}{section.4.3}%
+\contentsline {subsection}{\numberline {4.3.1}Initialization Phase}{36}{subsection.4.3.1}%
+\contentsline {subsection}{\numberline {4.3.2}Main Control Loop}{36}{subsection.4.3.2}%
+\contentsline {section}{\numberline {4.4}Module Categories}{36}{section.4.4}%
+\contentsline {subsection}{\numberline {4.4.1}Communication Module}{36}{subsection.4.4.1}%
+\contentsline {subsection}{\numberline {4.4.2}Control and Input Module}{37}{subsection.4.4.2}%
+\contentsline {subsection}{\numberline {4.4.3}Motor Control Module}{37}{subsection.4.4.3}%
+\contentsline {subsection}{\numberline {4.4.4}Servo Control Module}{37}{subsection.4.4.4}%
+\contentsline {subsection}{\numberline {4.4.5}Telemetry Module}{37}{subsection.4.4.5}%
+\contentsline {subsection}{\numberline {4.4.6}Sensor Interface Modules}{37}{subsection.4.4.6}%
+\contentsline {subsection}{\numberline {4.4.7}GPIO Expansion Driver}{38}{subsection.4.4.7}%
+\contentsline {subsection}{\numberline {4.4.8}Output Management Module}{38}{subsection.4.4.8}%
+\contentsline {section}{\numberline {4.5}Inter-Module Communication Model}{38}{section.4.5}%
+\contentsline {section}{\numberline {4.6}Header File Discipline}{38}{section.4.6}%
+\contentsline {section}{\numberline {4.7}Configuration and Pin Isolation}{39}{section.4.7}%
+\contentsline {section}{\numberline {4.8}Error Handling Strategy}{39}{section.4.8}%
+\contentsline {section}{\numberline {4.9}Resource Management Considerations}{39}{section.4.9}%
+\contentsline {section}{\numberline {4.10}Implementation Consistency with Architecture}{39}{section.4.10}%
+\contentsline {section}{\numberline {4.11}Summary}{40}{section.4.11}%
+\contentsline {chapter}{\numberline {5}Timing and Real-Time Analysis}{41}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Introduction}{41}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Execution Model Overview}{41}{section.5.2}%
+\contentsline {section}{\numberline {5.3}Control Loop Structure}{41}{section.5.3}%
+\contentsline {section}{\numberline {5.4}Worst-Case Execution Time (WCET)}{42}{section.5.4}%
+\contentsline {subsection}{\numberline {5.4.1}Qualitative Estimation}{42}{subsection.5.4.1}%
+\contentsline {section}{\numberline {5.5}Loop Frequency Estimation}{42}{section.5.5}%
+\contentsline {section}{\numberline {5.6}Communication Latency}{43}{section.5.6}%
+\contentsline {section}{\numberline {5.7}Actuator Update Timing}{43}{section.5.7}%
+\contentsline {section}{\numberline {5.8}Sensor Sampling Rate}{43}{section.5.8}%
+\contentsline {section}{\numberline {5.9}Determinism Analysis}{44}{section.5.9}%
+\contentsline {section}{\numberline {5.10}Jitter Considerations}{44}{section.5.10}%
+\contentsline {section}{\numberline {5.11}Real-Time Classification}{44}{section.5.11}%
+\contentsline {section}{\numberline {5.12}Communication Loss Handling}{45}{section.5.12}%
+\contentsline {section}{\numberline {5.13}Scalability Impact on Timing}{45}{section.5.13}%
+\contentsline {section}{\numberline {5.14}Summary}{45}{section.5.14}%
+\contentsline {chapter}{\numberline {6}Hardware Architecture and Implementation}{46}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Introduction}{46}{section.6.1}%
+\contentsline {section}{\numberline {6.2}System Overview}{46}{section.6.2}%
+\contentsline {section}{\numberline {6.3}Microcontroller Unit}{47}{section.6.3}%
+\contentsline {section}{\numberline {6.4}Motor Driver Stage}{47}{section.6.4}%
+\contentsline {section}{\numberline {6.5}Servo Control Interface}{47}{section.6.5}%
+\contentsline {section}{\numberline {6.6}Sensor Subsystem}{48}{section.6.6}%
+\contentsline {section}{\numberline {6.7}GPIO Expansion Module}{48}{section.6.7}%
+\contentsline {section}{\numberline {6.8}Power Distribution Architecture}{48}{section.6.8}%
+\contentsline {section}{\numberline {6.9}Signal Integrity Considerations}{48}{section.6.9}%
+\contentsline {section}{\numberline {6.10}Fail-Safe and Protection Mechanisms}{49}{section.6.10}%
+\contentsline {section}{\numberline {6.11}Hardware–Firmware Consistency}{49}{section.6.11}%
+\contentsline {section}{\numberline {6.12}Scalability and Expansion Potential}{49}{section.6.12}%
+\contentsline {section}{\numberline {6.13}Summary}{49}{section.6.13}%
+\contentsline {chapter}{\numberline {7}Performance Evaluation}{51}{chapter.7}%
+\contentsline {section}{\numberline {7.1}Introduction}{51}{section.7.1}%
+\contentsline {section}{\numberline {7.2}Experimental Setup}{51}{section.7.2}%
+\contentsline {section}{\numberline {7.3}Control Loop Frequency Measurement}{52}{section.7.3}%
+\contentsline {subsection}{\numberline {7.3.1}Observed Results}{52}{subsection.7.3.1}%
+\contentsline {section}{\numberline {7.4}End-to-End Command Latency}{52}{section.7.4}%
+\contentsline {subsection}{\numberline {7.4.1}Observed Behavior}{52}{subsection.7.4.1}%
+\contentsline {section}{\numberline {7.5}Actuator Response Stability}{53}{section.7.5}%
+\contentsline {section}{\numberline {7.6}Wireless Communication Stability}{53}{section.7.6}%
+\contentsline {section}{\numberline {7.7}Telemetry Throughput}{53}{section.7.7}%
+\contentsline {section}{\numberline {7.8}Memory Utilization}{53}{section.7.8}%
+\contentsline {section}{\numberline {7.9}CPU Utilization Estimation}{54}{section.7.9}%
+\contentsline {section}{\numberline {7.10}Stress Testing}{54}{section.7.10}%
+\contentsline {section}{\numberline {7.11}Performance Limitations}{54}{section.7.11}%
+\contentsline {section}{\numberline {7.12}Summary}{55}{section.7.12}%
+\contentsline {chapter}{\numberline {8}Design Decisions and Trade-Off Analysis}{56}{chapter.8}%
+\contentsline {section}{\numberline {8.1}Introduction}{56}{section.8.1}%
+\contentsline {section}{\numberline {8.2}Microcontroller Selection}{56}{section.8.2}%
+\contentsline {subsection}{\numberline {8.2.1}Advantages}{56}{subsection.8.2.1}%
+\contentsline {subsection}{\numberline {8.2.2}Trade-Offs}{57}{subsection.8.2.2}%
+\contentsline {section}{\numberline {8.3}Custom Communication Protocol}{57}{section.8.3}%
+\contentsline {subsection}{\numberline {8.3.1}Advantages}{57}{subsection.8.3.1}%
+\contentsline {subsection}{\numberline {8.3.2}Trade-Offs}{57}{subsection.8.3.2}%
+\contentsline {section}{\numberline {8.4}Modular Firmware Architecture}{57}{section.8.4}%
+\contentsline {subsection}{\numberline {8.4.1}Advantages}{57}{subsection.8.4.1}%
+\contentsline {subsection}{\numberline {8.4.2}Trade-Offs}{58}{subsection.8.4.2}%
+\contentsline {section}{\numberline {8.5}Hardware Abstraction Layer}{58}{section.8.5}%
+\contentsline {subsection}{\numberline {8.5.1}Advantages}{58}{subsection.8.5.1}%
+\contentsline {subsection}{\numberline {8.5.2}Trade-Offs}{58}{subsection.8.5.2}%
+\contentsline {section}{\numberline {8.6}Single-Threaded Execution Model}{58}{section.8.6}%
+\contentsline {subsection}{\numberline {8.6.1}Advantages}{58}{subsection.8.6.1}%
+\contentsline {subsection}{\numberline {8.6.2}Trade-Offs}{58}{subsection.8.6.2}%
+\contentsline {section}{\numberline {8.7}I2C-Based GPIO Expansion}{59}{section.8.7}%
+\contentsline {subsection}{\numberline {8.7.1}Advantages}{59}{subsection.8.7.1}%
+\contentsline {subsection}{\numberline {8.7.2}Trade-Offs}{59}{subsection.8.7.2}%
+\contentsline {section}{\numberline {8.8}Static Memory Allocation Strategy}{59}{section.8.8}%
+\contentsline {subsection}{\numberline {8.8.1}Advantages}{59}{subsection.8.8.1}%
+\contentsline {subsection}{\numberline {8.8.2}Trade-Offs}{59}{subsection.8.8.2}%
+\contentsline {section}{\numberline {8.9}Binary Packet Structure}{59}{section.8.9}%
+\contentsline {subsection}{\numberline {8.9.1}Advantages}{59}{subsection.8.9.1}%
+\contentsline {subsection}{\numberline {8.9.2}Trade-Offs}{60}{subsection.8.9.2}%
+\contentsline {section}{\numberline {8.10}System Scalability Philosophy}{60}{section.8.10}%
+\contentsline {section}{\numberline {8.11}Overall Architectural Philosophy}{60}{section.8.11}%
+\contentsline {section}{\numberline {8.12}Summary}{60}{section.8.12}%
+\contentsline {chapter}{\numberline {9}Future Work}{61}{chapter.9}%
+\contentsline {section}{\numberline {9.1}Introduction}{61}{section.9.1}%
+\contentsline {section}{\numberline {9.2}Closed-Loop Control Implementation}{61}{section.9.2}%
+\contentsline {section}{\numberline {9.3}Migration to Real-Time Operating System}{61}{section.9.3}%
+\contentsline {section}{\numberline {9.4}Advanced Communication Protocol}{62}{section.9.4}%
+\contentsline {section}{\numberline {9.5}Wi-Fi and Internet Connectivity}{62}{section.9.5}%
+\contentsline {section}{\numberline {9.6}Energy Optimization}{62}{section.9.6}%
+\contentsline {section}{\numberline {9.7}Autonomous Operation Capabilities}{63}{section.9.7}%
+\contentsline {section}{\numberline {9.8}Improved Telemetry and Data Analytics}{63}{section.9.8}%
+\contentsline {section}{\numberline {9.9}Custom PCB Design}{63}{section.9.9}%
+\contentsline {section}{\numberline {9.10}Mechanical System Integration}{63}{section.9.10}%
+\contentsline {section}{\numberline {9.11}Scalability to Multi-Vehicle Systems}{64}{section.9.11}%
+\contentsline {section}{\numberline {9.12}Artificial Intelligence Integration}{64}{section.9.12}%
+\contentsline {section}{\numberline {9.13}Summary}{64}{section.9.13}%

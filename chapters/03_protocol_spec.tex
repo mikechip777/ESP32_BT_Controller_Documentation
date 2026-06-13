@@ -2,7 +2,7 @@
 
 \section{Protocol Overview}
 
-This chapter defines the structured packet-based communication protocol used for bidirectional data exchange between the embedded firmware and the external Android application.
+This chapter defines the structured packet-based communication protocol used for bidirectional data exchange between the embedded firmware and the TeleCon4ESP32 Android application.
 
 The protocol is designed to achieve:
 
@@ -72,7 +72,7 @@ The SOF pattern is unique and not permitted to appear as a valid packet prefix.
 
 \section{Control Packet Format}
 
-Control packets are transmitted from the Android application to the firmware.
+Control packets are transmitted from the TeleCon4ESP32 application to the firmware.
 
 \subsection{Control Packet Structure}
 
@@ -111,7 +111,7 @@ All control packets are fixed-length to simplify parsing logic and maintain cons
 
 \section{Telemetry Packet Format}
 
-Telemetry packets are transmitted from the firmware to the Android application.
+Telemetry packets are transmitted from the firmware to the TeleCon4ESP32 application.
 
 \subsection{Telemetry Packet Structure}
 
