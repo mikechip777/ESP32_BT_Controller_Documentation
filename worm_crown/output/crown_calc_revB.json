@@ -1,0 +1,79 @@
+{
+  "worm_input": {
+    "major_diameter_mm": 28.0,
+    "root_diameter_mm": 19.33,
+    "axial_pitch_mm": 6.35,
+    "starts": 1,
+    "pressure_angle_deg": 20.0
+  },
+  "blank_input": {
+    "teeth": 150,
+    "face_width_mm": 35.0,
+    "face_width_tol_plus": 0.2,
+    "face_width_tol_minus": 0.0,
+    "total_width_mm": 65.0,
+    "hub_diameter_mm": 120.0,
+    "bore_diameter_mm": 60.0,
+    "bore_tol_plus": 0.03,
+    "bore_tol_minus": 0.0,
+    "hub_length_mm": 30.0,
+    "keyway": "18 \u00d7 11 \u00d7 70 DIN 6885-1",
+    "keyway_width": "18 P9",
+    "keyway_depth": "11 P9",
+    "material": "Bronze / CuSn12",
+    "center_distance_tol_mm": 0.05
+  },
+  "worm_derived": {
+    "pitch_diameter_d1_mm": 23.957464,
+    "addendum_ha1_mm": 2.021268,
+    "dedendum_hf1_mm": 2.313732,
+    "diameter_quotient_q": 11.852692,
+    "lead_L_mm": 6.35,
+    "lead_angle_lambda_deg": 4.822568
+  },
+  "wheel": {
+    "teeth_z2": 150,
+    "module_m_mm": 2.021268,
+    "axial_pitch_Px_mm": 6.35,
+    "circular_pitch_p_mm": 6.35,
+    "pitch_diameter_d_mm": 303.190167,
+    "outside_diameter_da_mm": 307.232702,
+    "root_diameter_df_mm": 298.339124,
+    "addendum_ha_mm": 2.021268,
+    "dedendum_hf_mm": 2.425521,
+    "whole_depth_h_mm": 4.446789,
+    "tooth_thickness_s_mm": 3.175,
+    "center_distance_a_mm": 163.573816,
+    "reduction_ratio_i": 150.0,
+    "worm_lead_L_mm": 6.35,
+    "lead_angle_lambda_deg": 4.822568,
+    "pressure_angle_deg": 20.0
+  },
+  "display": {
+    "m": 2.021,
+    "Px": 6.35,
+    "p": 6.35,
+    "d": 303.19,
+    "da": 307.23,
+    "df": 298.34,
+    "ha": 2.02,
+    "hf": 2.43,
+    "h": 4.45,
+    "s": 3.175,
+    "a": 163.57,
+    "d1": 23.96,
+    "lambda_deg": 4.8,
+    "q": 11.853,
+    "i_label": "150:1",
+    "L": 6.35
+  },
+  "revision": {
+    "drawing_no": "WW-150T-2.0-01",
+    "rev": "B",
+    "prev_rev": "A",
+    "a_revA_mm": 165.58,
+    "a_revB_mm": 163.57,
+    "delta_a_mm": 2.01,
+    "fix": "Center distance uses worm pitch diameter d1 = da1 \u2212 2m, not major diameter da1."
+  }
+}
